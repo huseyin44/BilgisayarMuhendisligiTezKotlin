@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">HuseyinOral_BilgisayarMuhendisligiTez</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kayit_ol">KAYIT OL</string>
+    <string name="ifre">Şifre</string>
+    <string name="e_mail">E-mail</string>
+    <string name="g_r">GİRİŞ</string>
+    <string name="hesab_n_z_yoksa_kayit_ol">Hesabınız yoksa KAYIT OL</string>
+    <string name="k_yap">Çıkış Yap</string>
+</resources>

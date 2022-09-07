@@ -1,0 +1,31 @@
+
+buildscript {
+    ext {
+        build_gradle_version = '7.2.2'
+        kotlin_gradle_plugin_version = '1.7.10'
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:$build_gradle_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
+        def nav_version = "2.5.1"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath 'com.google.gms:google-services:4.3.13'
+    }
+}
+allprojects {
+    repositories {
+        // Make sure that you have the following two repositories
+        google()  // Google's Maven repository
+        mavenCentral()  // Maven Central repository
+
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
