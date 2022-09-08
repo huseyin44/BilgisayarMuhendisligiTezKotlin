@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/activity_main.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/antrenorlist_recycler_row.xml" value="0.16354166666666667" />
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/fragment_antrenor_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/fragment_login.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/fragment_login_or_register.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/fragment_register.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/fragment_register_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/layout/recycler_row_antrenorlist.xml" value="0.16614583333333333" />
         <entry key="..\:/Users/huseyin/Desktop/HuseyinOral_BilgisayarMuhendisligiTez/app/src/main/res/menu/options_menu.xml" value="0.20854700854700856" />
       </map>
     </option>

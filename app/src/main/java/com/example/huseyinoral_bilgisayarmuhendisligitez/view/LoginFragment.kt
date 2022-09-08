@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
 import android.os.Bundle
 import android.text.TextUtils

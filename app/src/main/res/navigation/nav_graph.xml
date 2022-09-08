@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.LoginFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.RegisterFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/antrenorListFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.AntrenorListFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragment"
         android:label="fragment_antrenor_list"
         tools:layout="@layout/fragment_antrenor_list" >
         <action

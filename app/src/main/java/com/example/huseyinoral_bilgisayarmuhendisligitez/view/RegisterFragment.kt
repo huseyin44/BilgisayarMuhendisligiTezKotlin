@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -136,7 +135,7 @@ class RegisterFragment : Fragment() {
             return false
         }
         if (sifre.toString().length < 6) {
-            Toast.makeText(activity, "Şifre 8 karekterden az olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "Şifre 6 karekterden az olmamalı", Toast.LENGTH_LONG).show()
             return false
         }
         if (isim.isNullOrBlank()) {
