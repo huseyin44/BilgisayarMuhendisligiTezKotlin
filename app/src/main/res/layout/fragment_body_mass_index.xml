@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginfragment_constraintlayout"
+    tools:context=".view.BodyMassIndexFragment">
+
+    <EditText
+        android:id="@+id/bmi_kilotext"
+        android:inputType="number"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/text_corners"
+        android:fontFamily="sans-serif-medium"
+        android:hint=" Kilonuz"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/bmi_boytext"
+        app:layout_constraintEnd_toStartOf="@+id/bmi_tablelayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></EditText>
+
+    <EditText
+        android:id="@+id/bmi_boytext"
+        android:inputType="number"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="13dp"
+        android:background="@drawable/text_corners"
+        android:fontFamily="sans-serif-medium"
+        android:hint=" Boyunuz cm"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@+id/bmi_tablelayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmi_kilotext"></EditText>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bmi_hesapla"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="177dp"
+        android:background="@color/teal_200"
+        android:fontFamily="sans-serif-medium"
+        android:text="HESAPLA"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/bmi_sonuctext"
+        app:layout_constraintEnd_toStartOf="@+id/bmi_tablelayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmi_boytext"></androidx.appcompat.widget.AppCompatButton>
+
+    <TableLayout
+        android:id="@+id/bmi_tablelayout"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/tablelayout_borderline"
+        app:layout_constraintBottom_toTopOf="@+id/bmi_sonuctext"
+        app:layout_constraintStart_toEndOf="@+id/bmi_kilotext"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:text=" Boy Kilo Endeksi Tablosu"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="normal">
+
+        </TextView>
+
+        <TableRow android:layout_width="wrap_content">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Kategori"
+                android:textColor="#41C346"
+                android:textSize="19sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:layout_width="103dp"
+                android:layout_height="70dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="BOY KİLO ENDEKSİ - kg/m2"
+                android:textAlignment="textStart"
+                android:textColor="#41C346"
+                android:textSize="19sp"
+                android:textStyle="normal"></TextView>
+        </TableRow>
+
+        <TableRow android:background="@drawable/tablelayout_borderline">
+
+            <TextView
+                android:layout_width="115dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="İdeal Kilonun Altı"
+                android:textColor="#8EC5F1"
+                android:textSize="20sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:text="&lt; 18,49"
+                android:textColor="#8EC5F1"
+                android:textSize="19sp"
+                android:textStyle="normal"></TextView>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="115dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="İdeal Kilo"
+                android:textColor="#8EC5F1"
+                android:textSize="20sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:text="18.5 - 24,99"
+                android:textColor="#8EC5F1"
+                android:textSize="18sp"
+                android:textStyle="normal"></TextView>
+        </TableRow>
+
+        <TableRow android:background="@drawable/tablelayout_borderline">
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="İdeal Kilonun Üzeri"
+                android:textColor="#8EC5F1"
+                android:textSize="20sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:text="&lt; 18,49"
+                android:textColor="#8EC5F1"
+                android:textSize="19sp"
+                android:textStyle="normal"></TextView>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="İdeal Kilonun Çok Üzeri"
+                android:textColor="#8EC5F1"
+                android:textSize="20sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:fontFamily="sans-serif-medium"
+                android:text="&lt; 18,49"
+                android:textColor="#8EC5F1"
+                android:textSize="19sp"
+                android:textStyle="normal"></TextView>
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/bmi_sonuctext"
+        android:layout_width="340dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="49dp"
+        android:background="#41C346"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#131313"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bmi_tablelayout"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>

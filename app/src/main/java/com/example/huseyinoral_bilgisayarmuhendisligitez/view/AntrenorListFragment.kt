@@ -1,5 +1,6 @@
 package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,14 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentAntrenorListBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentLoginBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class AntrenorListFragment : Fragment() {
     private var _binding: FragmentAntrenorListBinding? = null
@@ -36,18 +33,20 @@ class AntrenorListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAntrenorListBinding.inflate(inflater, container, false)
-        return binding.root
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         readAntrenorListToFirebase()
         //recycler işlemleri
-        var layoutManager=LinearLayoutManager(context)
+        val layoutManager=LinearLayoutManager(context)
         binding.antrenorListRecyclerView.layoutManager=layoutManager
         recyclerAntrenorAdapter= AntrenorListRecyclerAdapter(antrenorListesi)
         binding.antrenorListRecyclerView.adapter=recyclerAntrenorAdapter
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun readAntrenorListToFirebase(){
         database.collection("UserDetailPost").addSnapshotListener{ snapshot,exception ->
             //hata varsa

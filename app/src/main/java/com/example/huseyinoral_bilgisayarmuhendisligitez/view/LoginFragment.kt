@@ -16,16 +16,17 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        //kullanici giriş yaptıysa
+        //kullanici giriş yaptıysa anasayfadan başlasın diye
         val guncelkullanici=auth.currentUser
         if(guncelkullanici!=null){
-            loginPageToAntrenorListPage()
+            loginPageToHomePage()
         }
     }
 
@@ -34,42 +35,39 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.hesabinizyoksakayitolButton.setOnClickListener{
+        binding.loginHesabinizyoksakayitol.setOnClickListener{
             loginPageToRegisterPage()
         }
-
-        binding.loginButton.setOnClickListener {
+        binding.loginGirisbutton.setOnClickListener {
             if(isInputCorrect()){
                 signIn()
             }
-
         }
     }
 
     private fun loginPageToRegisterPage(){
-        val action=LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+        val action=LoginFragmentDirections.actionLoginFragmentToRegisterFragment2()
         findNavController().navigate(action)
-
     }
 
-    private fun loginPageToAntrenorListPage(){
-        val action=LoginFragmentDirections.actionLoginFragmentToAntrenorListFragment()
+    private fun loginPageToHomePage(){
+        val action=LoginFragmentDirections.actionLoginFragmentToHomePageFragment()
         findNavController().navigate(action)
-
-
     }
+
     private fun signIn() {
         auth.signInWithEmailAndPassword(
             binding.loginEmail.text.toString(),
             binding.loginPassword.text.toString()
         ).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                loginPageToAntrenorListPage()
+                loginPageToHomePage()
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()

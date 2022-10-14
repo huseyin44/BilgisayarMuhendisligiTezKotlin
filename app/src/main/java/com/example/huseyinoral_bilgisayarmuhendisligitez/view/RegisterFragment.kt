@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+import com.google.firebase.storage.FirebaseStorage
 
 
 class RegisterFragment : Fragment() {
@@ -22,19 +23,23 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     //firebase ile ilgili
+    private lateinit var storage : FirebaseStorage
     private lateinit var auth : FirebaseAuth
+    private lateinit var database : FirebaseFirestore
     val db= Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        storage = FirebaseStorage.getInstance()
         auth = FirebaseAuth.getInstance()
+        database = FirebaseFirestore.getInstance()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,21 +47,21 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.registerRadiogroup.setOnCheckedChangeListener(){group, checkedId ->
-            RegisterRadioGrupFun()
+        binding.registerRadiogroup.setOnCheckedChangeListener(){ _, _ ->
+            registerRadioGrupFun()
         }
         binding.registerButton.setOnClickListener{
             if(isInputCorrect()){
-                RegisterPageFun(it)
+                registerPageFun()
             }
         }
     }
-    private fun registerPageToAntrenorPage(){
-        val action=RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+    private fun registerPageToHomePage(){
+        val action=RegisterFragmentDirections.actionRegisterFragment2ToHomePageFragment()
         findNavController().navigate(action)
     }
     //radiobutton check
-    private fun RegisterRadioGrupFun():String{
+    private fun registerRadioGrupFun():String{
         var uyetipi=""
         if(binding.radiobuttonSporcu.isChecked){
             binding.radiobuttonAntrenor.isChecked=false
@@ -72,7 +77,7 @@ class RegisterFragment : Fragment() {
         return uyetipi
     }
 
-    fun RegisterPageFun(view: View){
+    fun registerPageFun() {
         //radiobutton kontrol
         val uyetipi=binding.radiobuttonText.text.toString()
         val email=binding.registerEmail.text.toString()
@@ -80,28 +85,51 @@ class RegisterFragment : Fragment() {
         val isim =binding.registerNameText.text.toString()
         val soyisim=binding.registerSurnameText.text.toString()
 
-        val postHashMap = hashMapOf<String, Any>()
-
         //kullanıcı email şifre kaydetme
         auth.createUserWithEmailAndPassword(email,sifre).addOnCompleteListener{ task ->
             //kayit başarıyla oluşturulduysa
             if(task.isSuccessful){
                 Log.d("RegisterLog","Firebase Auth Başarılı Oluştu")
-                //veritabanına diğer verileri kaydetme
-                postHashMap.put("email",email)
-                postHashMap.put("isim",isim)
-                postHashMap.put("soyisim",soyisim)
-                postHashMap.put("uyetipi",uyetipi)
-                //Kayıt Olduktan Sonra Giriş
-                signIn()
-                //Firestore a gönderme
-                db.collection("UserDetailPost").add(postHashMap).addOnSuccessListener  {
-                    Log.d("RegisterLog","Veriler Cloud Store Başarılı Gönderildi")
 
-                    registerPageToAntrenorPage()
-                }.addOnFailureListener {  exception ->
-                    Log.d("RegisterLog","CollectionFail Veriler Cloud Store Kaydedilemedi")
-                    Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
+                val secilenGorsel= (activity as MainActivity).secilenGorsel
+                if (secilenGorsel != null) {
+                    Log.d("RegisterLog","RegisterLog Profil Resmi Seçildi")
+                    //Kayıt Olduktan Sonra Giriş
+                    signIn()
+
+                    //guncel kullanıcı id alıp ona göre resimleri kaydetme
+                    val userID = FirebaseAuth.getInstance().currentUser!!.uid
+                    Log.d("RegisterLog",userID+" Güncel kullanıcı id")
+                    //Profil resmi için id oluşturma ve kaydedilecegi yeri belirleme
+                    val reference = storage.reference
+                    val gorselIsmi = "${userID}.jpg"
+                    val gorselReference = reference.child("ProfileImages").child(gorselIsmi)
+
+                    //Resmi Firebase Cloud Stora yükleme
+                    gorselReference.putFile(secilenGorsel).addOnSuccessListener {
+                        //Resim Cloud Stora gönderildikten sonra onun urlni alma
+                        val yuklenenGorselReference = FirebaseStorage.getInstance().reference.child("ProfileImages").child(gorselIsmi)
+                        yuklenenGorselReference.downloadUrl.addOnSuccessListener { uri ->
+                            val downloadUrl = uri.toString()
+                            //veritabanına diğer verileri kaydetme
+                            val postHashMap = hashMapOf<String, Any>()
+                            postHashMap["profilresmiurl"] = downloadUrl
+                            postHashMap["email"] = email
+                            postHashMap["isim"] = isim
+                            postHashMap["soyisim"] = soyisim
+                            postHashMap["uyetipi"] = uyetipi
+
+                            db.collection("UserDetailPost").document(userID).set(postHashMap).addOnSuccessListener  {
+                                Log.d("RegisterLog","Veriler FireStore Database Başarılı Gönderildi")
+                                registerPageToHomePage()
+                            }.addOnFailureListener {  exception ->
+                                Log.d("RegisterLog","Veriler FireStore Kaydedilemedi")
+                                Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
+                            }
+                        }.addOnFailureListener { exception ->
+                            Toast.makeText(context,exception.localizedMessage,Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             }
         }.addOnFailureListener { exception ->
@@ -109,6 +137,7 @@ class RegisterFragment : Fragment() {
             Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
         }
     }
+
     //email kontrol
     private fun String.isValidEmail() = !TextUtils.isEmpty(this) && Patterns.EMAIL_ADDRESS.matcher(this).matches()
     //kayit ol kontrol
@@ -159,10 +188,11 @@ class RegisterFragment : Fragment() {
             binding.registerPassword.text.toString()
         ).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                registerPageToAntrenorPage()
+                Log.d("RegisterLog","Firebase Giriş Yapıldı")
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
         }
     }
+
 }

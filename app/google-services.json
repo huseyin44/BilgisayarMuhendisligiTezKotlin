@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "92775300792-9ns8ndstndkdlsvbnf63qjsfoipeeiec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.huseyinoral_bilgisayarmuhendisligitez",
+            "certificate_hash": "6d8de48dedc22a0a5ec626a26f9e6056f9ba346e"
+          }
+        },
+        {
           "client_id": "92775300792-v9kivr060e05fm1bdpjhbnoeqeoiva0p.apps.googleusercontent.com",
           "client_type": 3
         }
