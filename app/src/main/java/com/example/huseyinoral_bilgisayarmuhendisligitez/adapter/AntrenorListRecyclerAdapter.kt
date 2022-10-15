@@ -3,8 +3,10 @@ package com.example.huseyinoral_bilgisayarmuhendisligitez.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 
@@ -22,9 +24,10 @@ class AntrenorListRecyclerAdapter(val antrenorList:ArrayList<AntrenorData>):Recy
 
     override fun onBindViewHolder(holder: AntrenorListViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.recycler_row_email).text=antrenorList[position].email
-        holder.itemView.findViewById<TextView>(R.id.recycler_row_isim).text=antrenorList[position].isim
-        holder.itemView.findViewById<TextView>(R.id.recycler_row_soyisim).text=antrenorList[position].soyisim
         holder.itemView.findViewById<TextView>(R.id.recycler_row_uyetipi).text=antrenorList[position].uyetipi
+        holder.itemView.findViewById<TextView>(R.id.recycler_row_isimsoyisim).text=antrenorList[position].isim+" "+antrenorList[position].soyisim
+        val url=antrenorList[position].profilresmiurl
+        Glide.with(holder.itemView.context).load(url).into(holder.itemView.findViewById(R.id.recycler_row_profilresmiurl))
     }
 
     override fun getItemCount(): Int {

@@ -47,6 +47,12 @@
         <action
             android:id="@+id/action_sportsExerciseFragment_to_freeExerciseFragment"
             app:destination="@id/freeExerciseFragment" />
+        <action
+            android:id="@+id/action_sportsExerciseFragment_to_gymnasticExercisesFragment"
+            app:destination="@id/gymnasticExercisesFragment" />
+        <action
+            android:id="@+id/action_sportsExerciseFragment_to_calisthenicsExerciseFragment"
+            app:destination="@id/calisthenicsExerciseFragment" />
     </fragment>
     <fragment
         android:id="@+id/tipsAndAdviceFragment"
@@ -73,4 +79,12 @@
         android:id="@+id/freeExerciseFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.FreeExerciseFragment"
         tools:layout="@layout/fragment_free_exercise" />
+    <fragment
+        android:id="@+id/gymnasticExercisesFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.GymnasticExercisesFragment"
+        tools:layout="@layout/fragment_gymnastic_exercises" />
+    <fragment
+        android:id="@+id/calisthenicsExerciseFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.CalisthenicsExerciseFragment"
+        tools:layout="@layout/fragment_calisthenics_exercise" />
 </navigation>

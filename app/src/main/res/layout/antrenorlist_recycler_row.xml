@@ -1,46 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/loginfragment_constraintlayout">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/recycler_row_email"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="email"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/recycler_row_isim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="isim"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/recycler_row_soyisim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="soyisim"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/recycler_row_uyetipi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="antrenor"
-            android:textSize="30sp" />
-
+            android:layout_height="150dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+            <ImageView
+                android:id="@+id/recycler_row_profilresmiurl"
+                android:layout_marginTop="5dp"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"/>
+            <LinearLayout
+                android:layout_width="190dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:id="@+id/recycler_row_isimsoyisim"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:text="isim"
+                    android:textAllCaps="true"
+                    android:textAlignment="viewStart"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/recycler_row_uyetipi"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal"
+                    android:textAllCaps="true"
+                    android:text="isim"
+                    android:textAlignment="viewStart"/>
+                <TextView
+                    android:id="@+id/recycler_row_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal"
+                    android:text="isim"
+                    android:textAlignment="viewStart"/>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_chat_24"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

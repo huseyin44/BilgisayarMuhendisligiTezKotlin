@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.sports_exercise.GymnasticExercisesFragment"
+    android:background="@drawable/loginfragment_constraintlayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Öne ve Geriye Doğru Takla"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/gymnasticexercise_taklaimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gymnasticexercise_taklatext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Amut (Handstand)"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/gymnasticexercise_amutimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gymnasticexercise_amuttext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Split"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/gymnasticexercise_splitimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gymnasticexercise_splittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Öne Köprü"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/gymnasticexercise_onekopruimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/gymnasticexercise_onekoprutext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

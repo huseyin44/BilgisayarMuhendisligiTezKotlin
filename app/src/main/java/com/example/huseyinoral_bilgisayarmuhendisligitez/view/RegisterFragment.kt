@@ -147,6 +147,11 @@ class RegisterFragment : Fragment() {
         val email=binding.registerEmail.text
         val sifre =binding.registerPassword.text
 
+        val secilenGorsel= (activity as MainActivity).secilenGorsel
+        if (secilenGorsel == null){
+            Toast.makeText(activity, "Profil resmi seçilmei", Toast.LENGTH_LONG).show()
+            return false
+        }
         if (email.isNullOrBlank()) {
             Toast.makeText(activity, "Mail boş olmamalı", Toast.LENGTH_LONG).show()
             return false

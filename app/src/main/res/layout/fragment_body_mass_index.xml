@@ -177,7 +177,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:fontFamily="sans-serif-medium"
-                android:text="&lt; 18,49"
+                android:text="25 - 29,99"
                 android:textColor="#8EC5F1"
                 android:textSize="19sp"
                 android:textStyle="normal"></TextView>
@@ -201,7 +201,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:fontFamily="sans-serif-medium"
-                android:text="&lt; 18,49"
+                android:text=" >  30"
                 android:textColor="#8EC5F1"
                 android:textSize="19sp"
                 android:textStyle="normal"></TextView>

@@ -40,6 +40,20 @@ class SportsExerciseFragment : Fragment() {
         binding.sportsexerciseGermetext.setOnClickListener {
             sportExercisetoFreeExercise()
         }
+
+        binding.sportsexerciseJimnastikimage.setOnClickListener {
+            sportExercisetoGymnasticExercise()
+        }
+        binding.sportsexerciseJimnastiktext.setOnClickListener {
+            sportExercisetoGymnasticExercise()
+        }
+
+        binding.sportsexerciseEkipmanyokimage.setOnClickListener {
+            sportExercisetoCalisthenicsExercise()
+        }
+        binding.sportsexerciseEkipmanyoktext.setOnClickListener {
+            sportExercisetoCalisthenicsExercise()
+        }
     }
 
     private fun firebaseSportsExcerciseImages() {
@@ -49,12 +63,12 @@ class SportsExerciseFragment : Fragment() {
             val url=uri.toString()
             Glide.with(this).load(url).into(binding.sportsexerciseGermeimage)
         }
-        val listRef2 =storage.reference.child("SportsExercise").child("Ekipmansız.jpg")
+        val listRef2 =storage.reference.child("SportsExercise").child("jimnastik.jpg")
         listRef2.downloadUrl.addOnSuccessListener { uri->
             val url=uri.toString()
             Glide.with(this).load(url).into(binding.sportsexerciseJimnastikimage)
         }
-        val listRef3 =storage.reference.child("SportsExercise").child("jimnastik.jpg")
+        val listRef3 =storage.reference.child("SportsExercise").child("Ekipmansız.jpg")
         listRef3.downloadUrl.addOnSuccessListener { uri->
             val url=uri.toString()
             Glide.with(this).load(url).into(binding.sportsexerciseEkipmanyokimage)
@@ -68,6 +82,16 @@ class SportsExerciseFragment : Fragment() {
 
     private fun sportExercisetoFreeExercise(){
         val action= SportsExerciseFragmentDirections.actionSportsExerciseFragmentToFreeExerciseFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun sportExercisetoGymnasticExercise(){
+        val action= SportsExerciseFragmentDirections.actionSportsExerciseFragmentToGymnasticExercisesFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun sportExercisetoCalisthenicsExercise(){
+        val action= SportsExerciseFragmentDirections.actionSportsExerciseFragmentToCalisthenicsExerciseFragment()
         findNavController().navigate(action)
     }
 }

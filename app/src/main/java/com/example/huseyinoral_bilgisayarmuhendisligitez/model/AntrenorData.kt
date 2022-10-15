@@ -4,5 +4,6 @@ data class AntrenorData(
     val email: String?,
     val isim:String?,
     val soyisim:String?,
-    val uyetipi:String?
+    val uyetipi:String?,
+    val profilresmiurl:String?
 )

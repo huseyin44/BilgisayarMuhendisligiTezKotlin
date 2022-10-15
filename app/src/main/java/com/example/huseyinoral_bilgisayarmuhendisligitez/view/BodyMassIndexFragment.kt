@@ -39,13 +39,13 @@ class BodyMassIndexFragment : Fragment() {
         if(value < 18.49){
             binding.bmiSonuctext.text="Vücüt Kitle İndeksi : $value  Kilonuz İdeal Kilonun Altındadır"
         }
-        if(18.5<value && value<24.99){
+        else if(18.5<value && value<24.99){
             binding.bmiSonuctext.text="Vücüt Kitle İndeksi : $value  Kilonuz İdealdir"
         }
-        if(25<value && value<29.99){
+        else if(25<value && value<29.99){
             binding.bmiSonuctext.text="Vücüt Kitle İndeksi : $value  Kilonuz İdeal Kilonun Üzerindedir"
         }
-        if(value > 30.0){
+        else if(value > 30.0){
             binding.bmiSonuctext.text="Vücüt Kitle İndeksi : $value  Kilonuz İdeal Kilonun Üzerindedir"
         }
     }

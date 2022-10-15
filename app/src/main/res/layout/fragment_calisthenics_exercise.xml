@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.sports_exercise.CalisthenicsExerciseFragment"
+    android:background="@drawable/loginfragment_constraintlayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Wide Push Up  – Açık Şınav – Göğüs"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_pushupimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_pushuptext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Pike Push Up – Omuz"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_pikepushupimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_pikepushuptext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Bent Over Row – Sırt"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_bentoverimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_bentovertext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Door Way Curl – Biceps – Ön Kol"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_doorwaycurlimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_doorwaycurltext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Triceps Dips – Triceps – Arka Kol"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_tricepsimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_tricepstext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Squat – Bacak"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_squatimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_squattext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Hip Thrust – Kalça"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_hipthrustimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_hipthrusttext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Calf Raises – Kalf"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_callraisesimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_callraisestext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Crunch – Ön Karın"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_crunchimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_crunchtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#970505"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Lying Side Bends – Yan Karın"
+            android:textAlignment="center"
+            android:layout_marginTop="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:id="@+id/calisthenicsExercise_sidebendsimage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="13dp"
+                android:scaleType="fitXY"
+                android:contentDescription="TODO" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/calisthenicsExercise_sidebendstext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:layout_marginRight="2dp"
+                    android:scrollbars = "vertical">
+                </TextView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -65,7 +65,8 @@ class AntrenorListFragment : Fragment() {
                             val isim =document.get("isim") as String
                             val soyisim =document.get("soyisim") as String
                             val uyetipi =document.get("uyetipi") as String
-                            val indirilenAntrenorList=AntrenorData(email,isim,soyisim,uyetipi)
+                            val profilresmiurl =document.get("profilresmiurl") as String
+                            val indirilenAntrenorList=AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl)
                             antrenorListesi.add(indirilenAntrenorList)
                         }
                         recyclerAntrenorAdapter.notifyDataSetChanged()
