@@ -42,7 +42,7 @@ class HomePageFragment : Fragment() {
         binding.egzersizText.setOnClickListener {
             homePageToSportsExcercise()
         }
-        binding.egzersizText.setOnClickListener {
+        binding.egzersizImageButton.setOnClickListener {
             homePageToSportsExcercise()
         }
         binding.vucutkitleindeksiText.setOnClickListener {
@@ -54,7 +54,7 @@ class HomePageFragment : Fragment() {
         binding.userprofileText.setOnClickListener {
             homePageToUserProfile()
         }
-        binding.userprofileText.setOnClickListener {
+        binding.userprofileImageButton.setOnClickListener {
             homePageToUserProfile()
         }
     }

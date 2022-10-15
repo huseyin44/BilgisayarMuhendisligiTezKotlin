@@ -19,7 +19,6 @@ class TipsAndAdviceFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        firebaseTipsAndAdviceImages()
     }
 
     override fun onCreateView(
@@ -29,6 +28,11 @@ class TipsAndAdviceFragment : Fragment() {
         _binding = FragmentTipsAndAdviceBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        firebaseTipsAndAdviceImages()
     }
 
     fun firebaseTipsAndAdviceImages() {

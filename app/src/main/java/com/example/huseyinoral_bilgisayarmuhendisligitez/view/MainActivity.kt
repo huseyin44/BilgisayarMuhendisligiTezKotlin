@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.menu_egzersiz -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.tipsAndAdviceFragment)
+                    navController.navigate(R.id.sportsExerciseFragment)
                     true
                 }
                 R.id.menu_profilduzenle -> {

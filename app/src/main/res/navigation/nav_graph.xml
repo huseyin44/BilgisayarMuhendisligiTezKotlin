@@ -42,8 +42,12 @@
         tools:layout="@layout/fragment_body_mass_index" />
     <fragment
         android:id="@+id/sportsExerciseFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.SportsExerciseFragment"
-        tools:layout="@layout/fragment_sports_exercise" />
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.SportsExerciseFragment"
+        tools:layout="@layout/fragment_sports_exercise" >
+        <action
+            android:id="@+id/action_sportsExerciseFragment_to_freeExerciseFragment"
+            app:destination="@id/freeExerciseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tipsAndAdviceFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.TipsAndAdviceFragment"
@@ -65,4 +69,8 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.UserProfileFragment"
         tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/freeExerciseFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.FreeExerciseFragment"
+        tools:layout="@layout/fragment_free_exercise" />
 </navigation>
