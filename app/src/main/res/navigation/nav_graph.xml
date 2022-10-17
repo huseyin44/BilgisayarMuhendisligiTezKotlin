@@ -74,7 +74,12 @@
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.UserProfileFragment"
-        tools:layout="@layout/fragment_user_profile" />
+        tools:layout="@layout/fragment_user_profile" >
+
+        <action
+            android:id="@+id/action_userProfileFragment_to_userProfileUpdateFragment"
+            app:destination="@id/userProfileUpdateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/freeExerciseFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.FreeExerciseFragment"
@@ -87,4 +92,12 @@
         android:id="@+id/calisthenicsExerciseFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.sports_exercise.CalisthenicsExerciseFragment"
         tools:layout="@layout/fragment_calisthenics_exercise" />
+    <fragment
+        android:id="@+id/userProfileUpdateFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.UserProfileUpdateFragment"
+        tools:layout="@layout/fragment_user_profile_update" >
+        <action
+            android:id="@+id/action_userProfileUpdateFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
 </navigation>

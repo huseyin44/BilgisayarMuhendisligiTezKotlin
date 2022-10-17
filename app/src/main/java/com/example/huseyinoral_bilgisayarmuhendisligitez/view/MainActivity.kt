@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.registerFragment2, R.id.loginFragment,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
-                R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment
+                R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -153,9 +153,12 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
     //GALERİ İZİNLERİYLE İLGİLİ
     var secilenGorsel : Uri? = null
     var secilenBitmap : Bitmap? = null
+    var secilenUserProfilGorsel : Uri? = null
+    var secilenUserProfileBitmap2 : Bitmap? = null
     fun registerImageclick(view: View){
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -165,6 +168,17 @@ class MainActivity : AppCompatActivity() {
             //izin zaten varsa
             val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(galeriIntent,2)
+        }
+    }
+    fun userProfileImageclick(view: View){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            //izni almamışız
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
+        } else {
+            //izin zaten varsa
+            val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(galeriIntent,3)
         }
     }
     override fun onRequestPermissionsResult(
@@ -177,6 +191,7 @@ class MainActivity : AppCompatActivity() {
                 //izin verilince yapılacaklar
                 val galeriIntent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(galeriIntent,2)
+                startActivityForResult(galeriIntent,3)
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -184,7 +199,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
             secilenGorsel = data.data
-            if (secilenGorsel != null) {
+            if (secilenGorsel != null ) {
                 if(Build.VERSION.SDK_INT >= 28) {
                     val source = ImageDecoder.createSource(this.contentResolver,secilenGorsel!!)
                     secilenBitmap = ImageDecoder.decodeBitmap(source)
@@ -194,6 +209,22 @@ class MainActivity : AppCompatActivity() {
                     secilenBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,secilenGorsel)
                     val toolbar: ImageView = findViewById<View>(R.id.imageView) as ImageView
                     toolbar.setImageBitmap(secilenBitmap)
+                }
+            }
+        }
+        //userprofile profil resmi güncellemesi için
+        if (requestCode == 3 && resultCode == Activity.RESULT_OK && data != null) {
+            secilenUserProfilGorsel = data.data
+            if (secilenUserProfilGorsel != null ) {
+                if(Build.VERSION.SDK_INT >= 28) {
+                    val source = ImageDecoder.createSource(this.contentResolver,secilenUserProfilGorsel!!)
+                    secilenUserProfileBitmap2 = ImageDecoder.decodeBitmap(source)
+                    val toolbar: ImageView = findViewById<View>(R.id.userprofile_edit_image) as ImageView
+                    toolbar.setImageBitmap(secilenUserProfileBitmap2)
+                } else {
+                    secilenUserProfileBitmap2 = MediaStore.Images.Media.getBitmap(this.contentResolver,secilenUserProfilGorsel)
+                    val toolbar: ImageView = findViewById<View>(R.id.userprofile_edit_image) as ImageView
+                    toolbar.setImageBitmap(secilenUserProfileBitmap2)
                 }
             }
         }
