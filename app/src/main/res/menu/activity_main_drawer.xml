@@ -26,6 +26,13 @@
             >
         </item>
         <item
+            android:id="@+id/menu_publicchat"
+            android:icon="@drawable/ic_baseline_chat_24"
+            android:title="GENEL SOHBET"
+            app:showAsAction="never"
+            >
+        </item>
+        <item
             android:id="@+id/menu_kayitol"
             android:icon="@drawable/ic_baseline_login_24"
             android:title="KAYIT OL"

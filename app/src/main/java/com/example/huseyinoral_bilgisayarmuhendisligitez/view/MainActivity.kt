@@ -11,34 +11,24 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
-import android.widget.EditText
+import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.RadioButton
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.huseyinoral_bilgisayarmuhendisligitez.NavigationitemVisibilityClass
+import com.example.huseyinoral_bilgisayarmuhendisligitez.classes.NavigationItemClass
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,11 +36,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val naviItemVisbilityClass=NavigationitemVisibilityClass()//
 
         setSupportActionBar(binding.appBarMain.toolbar)
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -60,93 +49,18 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.registerFragment2, R.id.loginFragment,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
-                R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment
+                R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment,
+                R.id.publicChatFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        //Güncel kullanıcıyı alma
-        val auth = FirebaseAuth.getInstance()
-
-        navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.menu_girisyap -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)//navigationview tıklandıktan sonra kapanmasını sağlar
-                    navController.navigate(R.id.loginFragment)
-                    true
-                }
-                R.id.menu_anasayfa -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.homePageFragment)
-                    true
-                }
-                R.id.menu_kayitol -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.registerFragment2)
-                    true
-                }
-                R.id.menu_ipucları -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.tipsAndAdviceFragment)
-                    true
-                }
-                R.id.menu_antrenorler -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.antrenorListFragment2)
-                    true
-                }
-                R.id.menu_egzersiz -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.sportsExerciseFragment)
-                    true
-                }
-                R.id.menu_profilduzenle -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.userProfileFragment)
-                    true
-                }
-                R.id.menu_vucutkitleindeksi -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.bodyMassIndexFragment)
-                    true
-                }
-                R.id.menu_cikisyap -> {
-                    auth.signOut()
-                    naviItemVisbilityClass.navigationitemvisibility(navView)
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.loginFragment)
-                    true
-                }
-                else -> false
-            }
-        }
-        navController.addOnDestinationChangedListener{ _, destination, _ ->
-            if(destination.id == R.id.antrenorListFragment2) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.registerFragment2) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.homePageFragment) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.tipsAndAdviceFragment) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.loginFragment) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.userProfileFragment) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.bodyMassIndexFragment) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-            if(destination.id == R.id.sportsExerciseFragment) {
-                naviItemVisbilityClass.navigationitemvisibility(navView)
-            }
-        }
+        val naviItemClass= NavigationItemClass()
+        //NavigationDrawer Kullanarak Sayfalar Arası Gezinti için
+        naviItemClass.navigationMenuItemSelect(navView,navController,binding)
+        //NavigationDrawer itemlerinin görünürlüğü
+        naviItemClass.navigationDrawerDestinationChanged(navView,navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

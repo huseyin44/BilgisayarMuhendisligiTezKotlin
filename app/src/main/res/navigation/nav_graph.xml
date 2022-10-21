@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_publicChatFragment"
+            app:destination="@id/publicChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/bodyMassIndexFragment"
@@ -100,4 +103,8 @@
             android:id="@+id/action_userProfileUpdateFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/publicChatFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PublicChatFragment"
+        tools:layout="@layout/fragment_public_chat" />
 </navigation>
