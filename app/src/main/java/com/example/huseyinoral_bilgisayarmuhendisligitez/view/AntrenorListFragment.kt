@@ -33,8 +33,7 @@ class AntrenorListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAntrenorListBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,7 +65,10 @@ class AntrenorListFragment : Fragment() {
                             val soyisim =document.get("soyisim") as String
                             val uyetipi =document.get("uyetipi") as String
                             val profilresmiurl =document.get("profilresmiurl") as String
-                            val indirilenAntrenorList=AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl)
+                            val userId =document.get("userId") as String
+                            val aylikucret =document.get("aylikUcret") as String
+
+                            val indirilenAntrenorList=AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl,userId,aylikucret)
                             antrenorListesi.add(indirilenAntrenorList)
                         }
                         recyclerAntrenorAdapter.notifyDataSetChanged()

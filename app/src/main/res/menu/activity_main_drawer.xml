@@ -27,8 +27,15 @@
         </item>
         <item
             android:id="@+id/menu_publicchat"
-            android:icon="@drawable/ic_baseline_chat_24"
+            android:icon="@drawable/ic_baseline_groups_24"
             android:title="GENEL SOHBET"
+            app:showAsAction="never"
+            >
+        </item>
+        <item
+            android:id="@+id/menu_personalchat"
+            android:icon="@drawable/ic_baseline_chat_24"
+            android:title="SOHBET"
             app:showAsAction="never"
             >
         </item>
@@ -40,16 +47,16 @@
             >
         </item>
         <item
-            android:id="@+id/menu_ipucları"
-            android:icon="@drawable/ic_baseline_list_24"
-            android:title="İPUÇLARI"
+            android:id="@+id/menu_antrenorler"
+            android:icon="@drawable/ic_baseline_sensor_occupied_24"
+            android:title="ANTRENORLER"
             app:showAsAction="never"
             >
         </item>
         <item
-            android:id="@+id/menu_antrenorler"
-            android:icon="@drawable/ic_baseline_sensor_occupied_24"
-            android:title="ANTRENORLER"
+            android:id="@+id/menu_ipucları"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="İPUÇLARI"
             app:showAsAction="never"
             >
         </item>

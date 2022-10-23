@@ -57,7 +57,7 @@ class PublicChatFragment : Fragment() {
             return
         }
         val inputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus()!!.getWindowToken(), 0)
+        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
     }
 
     private fun writePublicChat() {
@@ -117,7 +117,6 @@ class PublicChatFragment : Fragment() {
                         binding.publicChatNestedscrollview.fullScroll(View.FOCUS_DOWN)
                     }
 
-
                     Log.d("PublicChatFragment","RealtimeDatabase Veriler READ")
                 }
                 //recyclerview
@@ -136,10 +135,8 @@ class PublicChatFragment : Fragment() {
             override fun onChildRemoved(p0: DataSnapshot) {
                 messageList.clear()
             }
-
         })
     }
-
 }
 
 

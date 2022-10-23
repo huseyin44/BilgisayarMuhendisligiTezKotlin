@@ -4,36 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.chatPage.PublicChatFragment">
+    tools:context=".view.chatPage.PersonalChatFragment">
 
     <androidx.core.widget.NestedScrollView
-        android:background="#4FB50F"
-        android:id="@+id/publicChat_nestedscrollview"
+        android:id="@+id/personalChat_nestedscrollview"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        android:layout_height="600dp"
+        android:background="#61D11B"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/personal_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/userpublic_recyclerview"/>
+            android:layout_height="match_parent" />
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/publicChat_nestedscrollview">
+        app:layout_constraintTop_toBottomOf="@+id/personalChat_nestedscrollview">
 
         <EditText
-            android:id="@+id/publicChat_edit_text"
+            android:id="@+id/personalChat_edit_text"
             android:layout_width="350dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
@@ -41,11 +42,11 @@
             android:hint=" Buraya Mesaj Yazabalirsiniz" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/publicChat_send_button"
+            android:id="@+id/personalChat_send_button"
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="65dp"
-            android:src="@drawable/ic_baseline_send_24"/>
+            android:src="@drawable/ic_baseline_send_24" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.registerFragment2, R.id.loginFragment,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
                 R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment,
-                R.id.publicChatFragment
+                R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

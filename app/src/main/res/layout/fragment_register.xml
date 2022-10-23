@@ -106,12 +106,12 @@
         android:id="@+id/register_radiogroup"
         android:layout_width="280dp"
         android:layout_height="50dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="85dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/register_aylikucret"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_password">
 
@@ -135,32 +135,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible" />
+
     </RadioGroup>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="244dp"
-        android:layout_height="114dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="121dp"
-        android:layout_marginBottom="83dp"
-        android:onClick="registerImageclick"
-        android:scaleType="centerInside"
-        android:src="@drawable/profilresmisecin"
-        app:layout_constraintBottom_toBottomOf="@+id/register_button"
+    <EditText
+        android:id="@+id/register_aylikucret"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:visibility="gone"
+        android:hint=" Aylık Ucret."
+        android:inputType="number"
+        android:textSize="23sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_radiogroup" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="12dp"
+        android:onClick="registerImageclick"
+        android:scaleType="centerInside"
+        android:src="@drawable/profilresmisecin"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_aylikucret" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register_button"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/text_corners"
         android:text="@string/kayit_ol"
         android:textAlignment="center"

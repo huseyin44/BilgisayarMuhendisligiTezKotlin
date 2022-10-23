@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentRegisterBinding
@@ -67,11 +68,15 @@ class RegisterFragment : Fragment() {
             binding.radiobuttonAntrenor.isChecked=false
             uyetipi="sporcu"
             Log.d("RegisterLog","sporcu")
+
+            binding.registerAylikucret.isVisible=false
         }
         else if(binding.radiobuttonAntrenor.isChecked){
             binding.radiobuttonSporcu.isChecked=false
             uyetipi="antrenör"
             Log.d("RegisterLog","antrenör")
+
+            binding.registerAylikucret.isVisible=true
         }
         binding.radiobuttonText.text=uyetipi
         return uyetipi
@@ -84,6 +89,7 @@ class RegisterFragment : Fragment() {
         val sifre=binding.registerPassword.text.toString()
         val isim =binding.registerNameText.text.toString()
         val soyisim=binding.registerSurnameText.text.toString()
+        val aylikucret=binding.registerAylikucret.text.toString()
 
         //kullanıcı email şifre kaydetme
         auth.createUserWithEmailAndPassword(email,sifre).addOnCompleteListener{ task ->
@@ -118,6 +124,8 @@ class RegisterFragment : Fragment() {
                             postHashMap["isim"] = isim
                             postHashMap["soyisim"] = soyisim
                             postHashMap["uyetipi"] = uyetipi
+                            postHashMap["userId"]=userID
+                            postHashMap["aylikUcret"]=aylikucret
 
                             db.collection("UserDetailPost").document(userID).set(postHashMap).addOnSuccessListener  {
                                 Log.d("RegisterLog","Veriler FireStore Database Başarılı Gönderildi")

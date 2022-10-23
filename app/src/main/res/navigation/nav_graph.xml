@@ -38,6 +38,12 @@
         <action
             android:id="@+id/action_homePageFragment_to_publicChatFragment"
             app:destination="@id/publicChatFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_personalChatFragment"
+            app:destination="@id/personalChatFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_personalListChatFragment"
+            app:destination="@id/personalListChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/bodyMassIndexFragment"
@@ -73,7 +79,11 @@
     <fragment
         android:id="@+id/antrenorListFragment2"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragment"
-        tools:layout="@layout/fragment_antrenor_list" />
+        tools:layout="@layout/fragment_antrenor_list" >
+        <action
+            android:id="@+id/action_antrenorListFragment2_to_personalChatFragment"
+            app:destination="@id/personalChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.UserProfileFragment"
@@ -107,4 +117,26 @@
         android:id="@+id/publicChatFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PublicChatFragment"
         tools:layout="@layout/fragment_public_chat" />
+    <fragment
+        android:id="@+id/personalChatFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalChatFragment"
+        tools:layout="@layout/fragment_personal_chat" >
+        <argument
+            android:name="personalToUuid"
+            app:argType="string" />
+        <argument
+            android:name="toUserProfilUrl"
+            app:argType="string" />
+        <argument
+            android:name="toUserName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalListChatFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalListChatFragment"
+        tools:layout="@layout/fragment_personal_list_chat" >
+        <action
+            android:id="@+id/action_personalListChatFragment_to_personalChatFragment"
+            app:destination="@id/personalChatFragment" />
+    </fragment>
 </navigation>
