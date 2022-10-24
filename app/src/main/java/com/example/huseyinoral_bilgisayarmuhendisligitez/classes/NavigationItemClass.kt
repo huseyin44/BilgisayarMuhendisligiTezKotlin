@@ -29,6 +29,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_vucutkitleindeksi).isVisible=false
             navView.menu.findItem(R.id.menu_publicchat).isVisible=false
             navView.menu.findItem(R.id.menu_personalchat).isVisible=false
+            navView.menu.findItem(R.id.menu_notedefteri).isVisible=false
             Log.d("Navigationitemvisibility","GuncellKullanici Yok")
         }
         if(guncelkullanici!=null){
@@ -43,6 +44,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_vucutkitleindeksi).isVisible=true
             navView.menu.findItem(R.id.menu_publicchat).isVisible=true
             navView.menu.findItem(R.id.menu_personalchat).isVisible=true
+            navView.menu.findItem(R.id.menu_notedefteri).isVisible=true
             Log.d("Navigationitemvisibility","GuncellKullanici VAR")
         }
     }
@@ -102,6 +104,11 @@ class NavigationItemClass {
                     navController.navigate(R.id.personalListChatFragment)
                     true
                 }
+                R.id.menu_notedefteri -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.noteTitlePageFragment)
+                    true
+                }
                 R.id.menu_cikisyap -> {
                     auth.signOut()
                     navigationitemvisibility(navView)
@@ -144,6 +151,12 @@ class NavigationItemClass {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.personalListChatFragment) {
+                navigationitemvisibility(navView)
+            }
+            if(destination.id == R.id.noteTitlePageFragment) {
+                navigationitemvisibility(navView)
+            }
+            if(destination.id == R.id.noteDetailsFragment) {
                 navigationitemvisibility(navView)
             }
         }

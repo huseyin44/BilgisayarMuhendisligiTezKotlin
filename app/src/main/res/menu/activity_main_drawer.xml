@@ -26,6 +26,13 @@
             >
         </item>
         <item
+            android:id="@+id/menu_notedefteri"
+            android:icon="@drawable/ic_baseline_edit_note_24"
+            android:title="NOT DEFTERİ"
+            app:showAsAction="never"
+            >
+        </item>
+        <item
             android:id="@+id/menu_publicchat"
             android:icon="@drawable/ic_baseline_groups_24"
             android:title="GENEL SOHBET"

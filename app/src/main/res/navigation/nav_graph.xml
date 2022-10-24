@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_personalListChatFragment"
             app:destination="@id/personalListChatFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_noteTitlePageFragment"
+            app:destination="@id/noteTitlePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/bodyMassIndexFragment"
@@ -138,5 +141,30 @@
         <action
             android:id="@+id/action_personalListChatFragment_to_personalChatFragment"
             app:destination="@id/personalChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailsFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.notePage.NoteDetailsFragment"
+        tools:layout="@layout/fragment_note_details" >
+        <action
+            android:id="@+id/action_noteDetailsFragment_to_noteTitlePageFragment"
+            app:destination="@id/noteTitlePageFragment" />
+        <argument
+            android:name="noteTitleToNoteDetails"
+            app:argType="string" />
+        <argument
+            android:name="noteDetailsId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteTitlePageFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.notePage.NoteTitlePageFragment"
+        tools:layout="@layout/fragment_note_title_page" >
+        <action
+            android:id="@+id/action_noteTitlePageFragment_to_noteDetailsFragment"
+            app:destination="@id/noteDetailsFragment" />
+        <action
+            android:id="@+id/action_noteTitlePageFragment_self"
+            app:destination="@id/noteTitlePageFragment" />
     </fragment>
 </navigation>

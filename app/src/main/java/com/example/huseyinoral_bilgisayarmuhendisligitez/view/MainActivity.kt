@@ -11,8 +11,10 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.speech.RecognizerIntent
 import android.view.View
 import android.view.WindowManager
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -29,6 +31,7 @@ import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.registerFragment2, R.id.loginFragment,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
                 R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment,
-                R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment
+                R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment,R.id.noteDetailsFragment,R.id.noteTitlePageFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity() {
     var secilenBitmap : Bitmap? = null
     var secilenUserProfilGorsel : Uri? = null
     var secilenUserProfileBitmap2 : Bitmap? = null
+
     fun registerImageclick(view: View){
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -95,6 +99,22 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(galeriIntent,3)
         }
     }
+
+    fun speakTitleButton(view: View){
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Bir şey söyleyiniz.")
+        startActivityForResult(intent,100)
+    }
+    fun speakNoteEditButton(view: View){
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Bir şey söyleyiniz.")
+        startActivityForResult(intent,101)
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -110,6 +130,7 @@ class MainActivity : AppCompatActivity() {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
             secilenGorsel = data.data
@@ -142,6 +163,20 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        //NotTitleSpeakButton
+        if(requestCode == 100 && data != null){
+            val res : ArrayList<String> = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+            val editText: EditText = findViewById<View>(R.id.noteDetails_notetitle_edit) as EditText
+            editText.setText(res[0])
+        }
+        //NotDetailsSpeakButton
+        if(requestCode == 101 && data != null){
+            val res : ArrayList<String> = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+            val editText: EditText = findViewById<View>(R.id.noteDetails_notetDetailText_edit) as EditText
+            editText.setText(res[0])
+        }
+
         super.onActivityResult(requestCode, resultCode, data)
     }
 }
