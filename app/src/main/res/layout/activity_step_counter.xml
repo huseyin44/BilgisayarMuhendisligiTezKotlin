@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.StepCounterActivity">
+    <LinearLayout
+        android:background="@drawable/loginfragment_constraintlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/stepCounter_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#2c3e50"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/stepCounter_anasayfaMenu"
+                    android:textStyle="italic"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"
+                    android:text=" ANASAYFA"/>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:id="@+id/stepCounter_adimsayisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADIM SAYISI"
+            android:textStyle="italic"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="45sp"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="99dp" />
+
+        <TextView
+            android:id="@+id/stepCounter_atilanAdim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="37sp"
+            tools:layout_editor_absoluteX="195dp"
+            tools:layout_editor_absoluteY="239dp" />
+
+        <Button
+            android:id="@+id/stepCounter_adimSayarBaslat"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:textStyle="italic"
+            android:textSize="23sp"
+            android:background="#2889D6"
+            android:text="BAŞLAT"/>
+
+        <Button
+            android:id="@+id/stepCounter_adimSifirla"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:background="#A50D0D"
+            android:textStyle="italic"
+            android:textSize="25sp"
+            android:text="SIFIRLA"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

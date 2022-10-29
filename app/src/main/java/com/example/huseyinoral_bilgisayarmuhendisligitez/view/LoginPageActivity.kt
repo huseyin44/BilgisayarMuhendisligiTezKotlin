@@ -1,26 +1,28 @@
 package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
+import android.content.Context
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.AttributeSet
+import android.util.Log
 import android.util.Patterns
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentLoginBinding
+import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityLoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
 
-
-class LoginFragment : Fragment() {
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
-
+class LoginPageActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginPageBinding
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        binding = ActivityLoginPageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
         //kullanici giriş yaptıysa anasayfadan başlasın diye
@@ -28,19 +30,7 @@ class LoginFragment : Fragment() {
         if(guncelkullanici!=null){
             loginPageToHomePage()
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         binding.loginHesabinizyoksakayitol.setOnClickListener{
             loginPageToRegisterPage()
         }
@@ -49,16 +39,26 @@ class LoginFragment : Fragment() {
                 signIn()
             }
         }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
     private fun loginPageToRegisterPage(){
-        val action=LoginFragmentDirections.actionLoginFragmentToRegisterFragment2()
-        findNavController().navigate(action)
+        Log.d("RegisterPageActivity","Anasayfa Butonuna Tıklandı")
+        val intent = Intent(this, RegisterPageActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun loginPageToHomePage(){
-        val action=LoginFragmentDirections.actionLoginFragmentToHomePageFragment()
-        findNavController().navigate(action)
+        Log.d("RegisterPageActivity","Anasayfa Butonuna Tıklandı")
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun signIn() {
@@ -70,7 +70,7 @@ class LoginFragment : Fragment() {
                 loginPageToHomePage()
             }
         }.addOnFailureListener { exception ->
-            Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
+            Toast.makeText(this,exception.localizedMessage, Toast.LENGTH_LONG).show()
         }
     }
     //email kontrol
@@ -81,15 +81,15 @@ class LoginFragment : Fragment() {
         val sifre =binding.loginPassword.text
 
         if (email.isNullOrBlank()) {
-            Toast.makeText(activity, "Mail boş olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Mail boş olmamalı", Toast.LENGTH_LONG).show()
             return false
         }
         if (email.toString().isValidEmail().not()) {
-            Toast.makeText(activity, "Gecerli Email Adresi Olmalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Gecerli Email Adresi Olmalı", Toast.LENGTH_LONG).show()
             return false
         }
         if (sifre.isNullOrBlank()) {
-            Toast.makeText(activity, "Şifre boş olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Şifre boş olmamalı", Toast.LENGTH_LONG).show()
             return false
         }
         return true

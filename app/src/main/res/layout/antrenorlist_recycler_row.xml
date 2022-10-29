@@ -6,7 +6,7 @@
     >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical">
 
@@ -26,12 +26,11 @@
                 android:layout_width="190dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginLeft="8dp">
                 <TextView
                     android:id="@+id/recycler_row_isimsoyisim"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:fontFamily="sans-serif-black"
                     android:textColor="@color/black"
                     android:textSize="17sp"
@@ -43,7 +42,7 @@
                 <TextView
                     android:id="@+id/recycler_row_uyetipi"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="33dp"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="@color/black"
                     android:textSize="15sp"
@@ -54,13 +53,33 @@
                 <TextView
                     android:id="@+id/recycler_row_email"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="35dp"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="normal"
                     android:text="isim"
                     android:textAlignment="viewStart"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/recycler_row_ucretText"
+                        android:layout_width="160dp"
+                        android:layout_height="30dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        android:text="anternorun aylik ucreti : 350"
+                        android:textAlignment="viewStart"/>
+                    <ImageView
+                        android:id="@+id/recycler_row_antrenorList_UcretImage"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_attach_money_24"/>
+                </LinearLayout>
             </LinearLayout>
             <ImageView
                 android:id="@+id/recycler_row_antrenorList_chatimage"

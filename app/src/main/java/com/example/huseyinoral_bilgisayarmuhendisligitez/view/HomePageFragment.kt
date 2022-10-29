@@ -1,5 +1,6 @@
 package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,14 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentHomePageBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class HomePageFragment : Fragment() {
     private var _binding: FragmentHomePageBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        auth = FirebaseAuth.getInstance()
+        val guncelkullanici=auth.currentUser
+        if(guncelkullanici==null){
+            val action = HomePageFragmentDirections.actionHomePageFragmentToLoginPageActivity2()
+            findNavController().navigate(action)
+            activity?.finish()
+        }
     }
 
     override fun onCreateView(
@@ -27,6 +38,7 @@ class HomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.antrenorlerText.setOnClickListener {
             homePageToAntrenorList()
         }

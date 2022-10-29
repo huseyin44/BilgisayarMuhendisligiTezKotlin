@@ -73,11 +73,6 @@ class SportsExerciseFragment : Fragment() {
             val url=uri.toString()
             Glide.with(this).load(url).into(binding.sportsexerciseEkipmanyokimage)
         }
-        val listRef4 =storage.reference.child("SportsExercise").child("Islevselcalisma.jpg")
-        listRef4.downloadUrl.addOnSuccessListener { uri->
-            val url=uri.toString()
-            Glide.with(this).load(url).into(binding.sportsexerciseIslevselcalismaimage)
-        }
     }
 
     private fun sportExercisetoFreeExercise(){

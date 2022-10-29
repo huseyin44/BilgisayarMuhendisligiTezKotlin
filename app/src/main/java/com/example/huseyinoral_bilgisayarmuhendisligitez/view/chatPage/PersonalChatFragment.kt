@@ -4,12 +4,14 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PersonalRecyclerAdapter
@@ -17,7 +19,10 @@ import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentPer
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalChatData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -35,8 +40,8 @@ class PersonalChatFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        readPersonalChatData()
 
+        readPersonalChatData()
     }
 
     override fun onCreateView(
@@ -53,6 +58,7 @@ class PersonalChatFragment : Fragment() {
         binding.personalChatSendButton.setOnClickListener {
             writePersonalChat()
         }
+
     }
 
     fun hideSoftKeyboard(activity: Activity) {
@@ -62,6 +68,8 @@ class PersonalChatFragment : Fragment() {
         val inputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
     }
+
+
 
     private fun writePersonalChat() {
         val fromUserID = FirebaseAuth.getInstance().currentUser!!.uid

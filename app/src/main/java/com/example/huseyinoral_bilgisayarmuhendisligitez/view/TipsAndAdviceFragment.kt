@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentLoginBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentTipsAndAdviceBinding
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage

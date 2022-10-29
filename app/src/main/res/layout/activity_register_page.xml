@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RegisterFragment"
+    tools:context=".view.RegisterPageActivity"
     android:background="@drawable/loginfragment_constraintlayout">
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="200dp"
@@ -188,5 +187,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

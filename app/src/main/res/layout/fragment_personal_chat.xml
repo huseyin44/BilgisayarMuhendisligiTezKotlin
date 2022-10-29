@@ -9,7 +9,7 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/personalChat_nestedscrollview"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="0dp"
         android:background="#61D11B"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,17 +27,14 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personalChat_nestedscrollview">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/personalChat_edit_text"
             android:layout_width="350dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
             android:background="@android:color/transparent"
             android:hint=" Buraya Mesaj Yazabalirsiniz" />
 
@@ -45,7 +42,6 @@
             android:id="@+id/personalChat_send_button"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="65dp"
             android:src="@drawable/ic_baseline_send_24" />
     </LinearLayout>
 

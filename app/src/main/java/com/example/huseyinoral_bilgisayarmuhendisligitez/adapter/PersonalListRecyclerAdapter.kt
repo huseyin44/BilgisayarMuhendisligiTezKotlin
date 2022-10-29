@@ -12,6 +12,8 @@ import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalListChatFragmentDirections
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PersonalListRecyclerAdapter(val personalChatList:ArrayList<PersonalListChatData>): RecyclerView.Adapter<PersonalListRecyclerAdapter.PersonalChatListViewHolder>() {
 
@@ -38,7 +40,7 @@ class PersonalListRecyclerAdapter(val personalChatList:ArrayList<PersonalListCha
             holder.itemView.findNavController().navigate(action)
         }
         holder.itemView.findViewById<TextView>(R.id.personalListChatRecycler_isimsoyisim).setOnClickListener{
-            val action= PersonalListChatFragmentDirections.actionPersonalListChatFragmentToPersonalChatFragment(toUserId.toString(),url.toString(),isim.toString())
+            val action= PersonalListChatFragmentDirections.actionPersonalListChatFragmentToPersonalChatFragment(toUserId.toString(),url.toString(),isim.toString().toUpperCase(Locale.ROOT))
             holder.itemView.findNavController().currentDestination?.label=isim.toString()
             holder.itemView.findNavController().navigate(action)
         }

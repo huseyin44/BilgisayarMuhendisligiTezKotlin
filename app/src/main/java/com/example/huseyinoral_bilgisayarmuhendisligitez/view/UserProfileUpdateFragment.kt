@@ -59,12 +59,13 @@ class UserProfileUpdateFragment : Fragment() {
         val uyetipi=binding.userprofileEdittextUyetipi.text.toString()
         val isim =binding.userprofileEdittextIsim.text.toString()
         val soyisim=binding.userprofileEdittextSoyisim.text.toString()
+        val aylikucret =binding.userprofileEdittextAylikucret.text
 
         val storage = Firebase.storage
         val db = Firebase.firestore
 
         //Resmi Firebase Cloud Stora yükleme
-        val secilenGorsel= (activity as MainActivity).secilenUserProfilGorsel
+        val secilenGorsel= (activity as RegisterPageActivity).secilenUserProfilGorsel
         if (secilenGorsel != null) {
             Log.d("UserProfileUpdate","UserProfile Resmi Seçildi")
             //guncel kullanıcı id alıp ona göre resimleri kaydetme
@@ -84,6 +85,7 @@ class UserProfileUpdateFragment : Fragment() {
                     postHashMap["isim"] = isim
                     postHashMap["soyisim"] = soyisim
                     postHashMap["uyetipi"] = uyetipi
+                    postHashMap["aylikUcret"] = aylikucret
 
                     db.collection("UserDetailPost").document(userID).update(postHashMap).addOnSuccessListener  {
                         Log.d("UserProfileUpdate","Veriler FireStore Database Başarılı Gönderildi")
@@ -104,8 +106,9 @@ class UserProfileUpdateFragment : Fragment() {
         val isim = binding.userprofileEdittextIsim.text
         val soyisim =binding.userprofileEdittextSoyisim.text
         val uyetipi =binding.userprofileEdittextUyetipi.text
+        val aylikucret =binding.userprofileEdittextAylikucret.text
 
-        val secilenGorsel= (activity as MainActivity).secilenUserProfilGorsel
+        val secilenGorsel= (activity as RegisterPageActivity).secilenUserProfilGorsel
         if (secilenGorsel == null){
             Toast.makeText(activity, "Profil resmi seçilmei", Toast.LENGTH_LONG).show()
             return false
@@ -120,6 +123,10 @@ class UserProfileUpdateFragment : Fragment() {
         }
         if (uyetipi.isNullOrBlank()) {
             Toast.makeText(activity, "Uyetipi boş olmamalı", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if (aylikucret.isNullOrBlank()) {
+            Toast.makeText(activity, "Aylık Ücret boş olmamalı", Toast.LENGTH_LONG).show()
             return false
         }
         if (uyetipi.toString()!="antrenör" && uyetipi.toString()!="sporcu"){

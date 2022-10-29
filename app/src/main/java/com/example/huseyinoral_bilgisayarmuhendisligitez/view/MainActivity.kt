@@ -3,40 +3,48 @@ package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.speech.RecognizerIntent
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.huseyinoral_bilgisayarmuhendisligitez.classes.NavigationItemClass
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
+import com.example.huseyinoral_bilgisayarmuhendisligitez.classes.NavigationItemClass
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -44,16 +52,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appBarMain.toolbar)
-        val drawerLayout: DrawerLayout = binding.drawerLayout
+        setSupportActionBar(binding.mainAppBarMain.toolbar)
+        val drawerLayout: DrawerLayout = binding.mainDrawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         //appbar hangi fragmentlerde olacagi
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.registerFragment2, R.id.loginFragment,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
+                R.id.registerPageActivity2, R.id.loginPageActivity2,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
                 R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment,
-                R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment,R.id.noteDetailsFragment,R.id.noteTitlePageFragment
+                R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment,R.id.noteDetailsFragment,R.id.noteTitlePageFragment,
+                R.id.stepCounterActivity
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -71,34 +80,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    //GALERİ İZİNLERİYLE İLGİLİ
-    var secilenGorsel : Uri? = null
-    var secilenBitmap : Bitmap? = null
-    var secilenUserProfilGorsel : Uri? = null
-    var secilenUserProfileBitmap2 : Bitmap? = null
-
-    fun registerImageclick(view: View){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            //izni almamışız
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
-        } else {
-            //izin zaten varsa
-            val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(galeriIntent,2)
-        }
-    }
-    fun userProfileImageclick(view: View){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            //izni almamışız
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
-        } else {
-            //izin zaten varsa
-            val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(galeriIntent,3)
-        }
-    }
 
     fun speakTitleButton(view: View){
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -120,63 +101,28 @@ class MainActivity : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == 1){
-            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                //izin verilince yapılacaklar
-                val galeriIntent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                startActivityForResult(galeriIntent,2)
-                startActivityForResult(galeriIntent,3)
-            }
-        }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
-            secilenGorsel = data.data
-            if (secilenGorsel != null ) {
-                if(Build.VERSION.SDK_INT >= 28) {
-                    val source = ImageDecoder.createSource(this.contentResolver,secilenGorsel!!)
-                    secilenBitmap = ImageDecoder.decodeBitmap(source)
-                    val toolbar: ImageView = findViewById<View>(R.id.imageView) as ImageView
-                    toolbar.setImageBitmap(secilenBitmap)
-                } else {
-                    secilenBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,secilenGorsel)
-                    val toolbar: ImageView = findViewById<View>(R.id.imageView) as ImageView
-                    toolbar.setImageBitmap(secilenBitmap)
-                }
-            }
-        }
-        //userprofile profil resmi güncellemesi için
-        if (requestCode == 3 && resultCode == Activity.RESULT_OK && data != null) {
-            secilenUserProfilGorsel = data.data
-            if (secilenUserProfilGorsel != null ) {
-                if(Build.VERSION.SDK_INT >= 28) {
-                    val source = ImageDecoder.createSource(this.contentResolver,secilenUserProfilGorsel!!)
-                    secilenUserProfileBitmap2 = ImageDecoder.decodeBitmap(source)
-                    val toolbar: ImageView = findViewById<View>(R.id.userprofile_edit_image) as ImageView
-                    toolbar.setImageBitmap(secilenUserProfileBitmap2)
-                } else {
-                    secilenUserProfileBitmap2 = MediaStore.Images.Media.getBitmap(this.contentResolver,secilenUserProfilGorsel)
-                    val toolbar: ImageView = findViewById<View>(R.id.userprofile_edit_image) as ImageView
-                    toolbar.setImageBitmap(secilenUserProfileBitmap2)
-                }
-            }
-        }
 
         //NotTitleSpeakButton
-        if(requestCode == 100 && data != null){
-            val res : ArrayList<String> = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+        if (requestCode == 100 && data != null) {
+            val res: ArrayList<String> =
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
             val editText: EditText = findViewById<View>(R.id.noteDetails_notetitle_edit) as EditText
             editText.setText(res[0])
         }
         //NotDetailsSpeakButton
-        if(requestCode == 101 && data != null){
-            val res : ArrayList<String> = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
-            val editText: EditText = findViewById<View>(R.id.noteDetails_notetDetailText_edit) as EditText
+        if (requestCode == 101 && data != null) {
+            val res: ArrayList<String> =
+                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+            val editText: EditText =
+                findViewById<View>(R.id.noteDetails_notetDetailText_edit) as EditText
             editText.setText(res[0])
         }
 
         super.onActivityResult(requestCode, resultCode, data)
     }
+
 }

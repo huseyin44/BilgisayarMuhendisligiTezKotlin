@@ -6,6 +6,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
+import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityStepCounterBinding
 
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +31,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_publicchat).isVisible=false
             navView.menu.findItem(R.id.menu_personalchat).isVisible=false
             navView.menu.findItem(R.id.menu_notedefteri).isVisible=false
+            navView.menu.findItem(R.id.menu_adimSayar).isVisible=false
             Log.d("Navigationitemvisibility","GuncellKullanici Yok")
         }
         if(guncelkullanici!=null){
@@ -45,75 +47,85 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_publicchat).isVisible=true
             navView.menu.findItem(R.id.menu_personalchat).isVisible=true
             navView.menu.findItem(R.id.menu_notedefteri).isVisible=true
+            navView.menu.findItem(R.id.menu_adimSayar).isVisible=true
             Log.d("Navigationitemvisibility","GuncellKullanici VAR")
         }
     }
 
-    fun navigationMenuItemSelect(navView: NavigationView,navController:NavController,binding:ActivityMainBinding){
+    fun navigationMenuItemSelect(
+        navView: NavigationView,
+        navController:NavController,
+        binding:ActivityMainBinding
+    ){
         val auth = FirebaseAuth.getInstance()
 
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_girisyap -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)//navigationview tıklandıktan sonra kapanmasını sağlar
-                    navController.navigate(R.id.loginFragment)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)//navigationview tıklandıktan sonra kapanmasını sağlar
+                    navController.navigate(R.id.loginPageActivity2)
                     true
                 }
                 R.id.menu_anasayfa -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.homePageFragment)
                     true
                 }
                 R.id.menu_kayitol -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.registerFragment2)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.registerPageActivity2)
                     true
                 }
                 R.id.menu_ipucları -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.tipsAndAdviceFragment)
                     true
                 }
                 R.id.menu_antrenorler -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.antrenorListFragment2)
                     true
                 }
                 R.id.menu_egzersiz -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.sportsExerciseFragment)
                     true
                 }
                 R.id.menu_profilduzenle -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.userProfileFragment)
                     true
                 }
                 R.id.menu_vucutkitleindeksi -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.bodyMassIndexFragment)
                     true
                 }
                 R.id.menu_publicchat -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.publicChatFragment)
                     true
                 }
                 R.id.menu_personalchat -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.personalListChatFragment)
                     true
                 }
                 R.id.menu_notedefteri -> {
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.noteTitlePageFragment)
+                    true
+                }
+                R.id.menu_adimSayar -> {
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.stepCounterActivity)
                     true
                 }
                 R.id.menu_cikisyap -> {
                     auth.signOut()
                     navigationitemvisibility(navView)
-                    binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.loginFragment)
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.loginPageActivity2)
                     true
                 }
                 else -> false
@@ -126,7 +138,7 @@ class NavigationItemClass {
             if(destination.id == R.id.antrenorListFragment2) {
                 navigationitemvisibility(navView)
             }
-            if(destination.id == R.id.registerFragment2) {
+            if(destination.id == R.id.registerPageActivity2) {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.homePageFragment) {
@@ -135,7 +147,7 @@ class NavigationItemClass {
             if(destination.id == R.id.tipsAndAdviceFragment) {
                 navigationitemvisibility(navView)
             }
-            if(destination.id == R.id.loginFragment) {
+            if(destination.id == R.id.loginPageActivity2) {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.userProfileFragment) {
@@ -157,6 +169,9 @@ class NavigationItemClass {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.noteDetailsFragment) {
+                navigationitemvisibility(navView)
+            }
+            if(destination.id == R.id.stepCounterActivity) {
                 navigationitemvisibility(navView)
             }
         }

@@ -7,25 +7,25 @@
     tools:context=".view.chatPage.PublicChatFragment">
 
     <androidx.core.widget.NestedScrollView
-        android:background="#4FB50F"
         android:id="@+id/publicChat_nestedscrollview"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
+        android:layout_height="0dp"
+        android:background="#4FB50F"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userpublic_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/userpublic_recyclerview"/>
+            android:layout_height="match_parent" />
     </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,8 +44,7 @@
             android:id="@+id/publicChat_send_button"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="65dp"
-            android:src="@drawable/ic_baseline_send_24"/>
+            android:src="@drawable/ic_baseline_send_24" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
