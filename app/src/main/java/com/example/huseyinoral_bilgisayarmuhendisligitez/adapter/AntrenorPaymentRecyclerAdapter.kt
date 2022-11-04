@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorPaymentData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.AntrenorPaymentData
 
 class AntrenorPaymentRecyclerAdapter (val antrenorPaymentTitleList:ArrayList<AntrenorPaymentData>): RecyclerView.Adapter<AntrenorPaymentRecyclerAdapter.AntrenorPaymentListViewHolder>() {
 

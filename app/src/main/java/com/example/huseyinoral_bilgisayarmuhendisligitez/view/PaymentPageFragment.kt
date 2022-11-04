@@ -19,15 +19,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentPaymentPageBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PaymentData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PaymentData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalChatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import io.card.payment.CardIOActivity
-import io.card.payment.DataEntryActivity
-import org.checkerframework.checker.units.qual.s
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern

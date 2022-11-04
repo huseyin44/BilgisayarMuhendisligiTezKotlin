@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.UserPublicRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentPublicChatBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.UserPublicChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.UserPublicChatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -105,7 +105,7 @@ class PublicChatFragment : Fragment() {
                     val tarih=publicChatMessage.timestamp
                     val mesajid=publicChatMessage.messajid
                     val text=publicChatMessage.text
-                    val veriler=UserPublicChatData(mesajid,isim,userid,text, profilurl,tarih)
+                    val veriler= UserPublicChatData(mesajid,isim,userid,text, profilurl,tarih)
 
                     messageList.add(veriler)
 

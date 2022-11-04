@@ -213,4 +213,9 @@
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.RegisterPageActivity"
         android:label="activity_register_page"
         tools:layout="@layout/activity_register_page" />
+    <activity
+        android:id="@+id/videoChatActivity"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.VideoChatActivity"
+        android:label="activity_video_chat"
+        tools:layout="@layout/activity_video_chat" />
 </navigation>

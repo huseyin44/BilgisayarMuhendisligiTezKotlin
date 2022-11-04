@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentNoteDetailsBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.NoteTitleData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.NoteTitleData
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

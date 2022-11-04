@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PersonalListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentPersonalListChatBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalListChatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -48,7 +48,7 @@ class PersonalListChatFragment : Fragment() {
                     val userId=personalListChat.userId
                     val tarih=personalListChat.timestamp
 
-                    val veriler=PersonalListChatData(personalListId,isim,userId,profilurl,tarih)
+                    val veriler= PersonalListChatData(personalListId,isim,userId,profilurl,tarih)
 
                     personalList.add(veriler)
                 }

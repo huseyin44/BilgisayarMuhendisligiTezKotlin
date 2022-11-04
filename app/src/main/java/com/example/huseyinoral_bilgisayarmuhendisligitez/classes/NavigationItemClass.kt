@@ -121,6 +121,11 @@ class NavigationItemClass {
                     navController.navigate(R.id.stepCounterActivity)
                     true
                 }
+                R.id.menu_maps -> {
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.videoChatActivity)
+                    true
+                }
                 R.id.menu_cikisyap -> {
                     auth.signOut()
                     navigationitemvisibility(navView)

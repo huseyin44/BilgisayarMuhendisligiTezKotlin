@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentAntrenorListBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.AntrenorData
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AntrenorListFragment : Fragment() {
@@ -68,7 +68,7 @@ class AntrenorListFragment : Fragment() {
                             val userId =document.get("userId") as String
                             val aylikucret =document.get("aylikUcret") as String
 
-                            val indirilenAntrenorList=AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl,userId,aylikucret)
+                            val indirilenAntrenorList= AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl,userId,aylikucret)
                             antrenorListesi.add(indirilenAntrenorList)
                         }
                         recyclerAntrenorAdapter.notifyDataSetChanged()

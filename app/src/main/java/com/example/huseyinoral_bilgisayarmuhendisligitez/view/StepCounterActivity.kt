@@ -89,6 +89,7 @@ class StepCounterActivity : AppCompatActivity() , SensorEventListener {
             toplamAdim = event!!.values[0]
             val mevcutAdim = toplamAdim.toInt() - oncekiToplamAdimlar.toInt()
             stepAtilanAdim.text = ("$mevcutAdim")
+            binding.stepCounterYakilanKalori.text=(mevcutAdim * 0.05).toString()
         }
     }
 
@@ -98,6 +99,7 @@ class StepCounterActivity : AppCompatActivity() , SensorEventListener {
         binding.stepCounterAdimSifirla.setOnClickListener {
             oncekiToplamAdimlar = toplamAdim
             stepAtilanAdim.text = 0.toString()
+            binding.stepCounterYakilanKalori.text = 0.toString()
             saveData()
         }
     }
@@ -117,7 +119,6 @@ class StepCounterActivity : AppCompatActivity() , SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        // We do not have to write anything in this function for this app
     }
 
     private fun requestPermission() {

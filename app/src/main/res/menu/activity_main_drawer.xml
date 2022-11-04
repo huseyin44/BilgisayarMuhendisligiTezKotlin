@@ -68,6 +68,13 @@
             >
         </item>
         <item
+            android:id="@+id/menu_maps"
+            android:icon="@drawable/ic_baseline_directions_run_24"
+            android:title="MAPS"
+            app:showAsAction="never"
+            >
+        </item>
+        <item
             android:id="@+id/menu_ipucları"
             android:icon="@drawable/ic_baseline_list_24"
             android:title="İPUÇLARI"

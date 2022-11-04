@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.model
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view.model
 
 data class AntrenorPaymentData(
     val toUsername: String? = null,

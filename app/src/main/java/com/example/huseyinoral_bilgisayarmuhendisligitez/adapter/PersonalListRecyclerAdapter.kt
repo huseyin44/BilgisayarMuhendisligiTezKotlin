@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalListChatData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalListChatFragmentDirections
 import java.util.*
