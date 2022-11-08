@@ -16,8 +16,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PersonalRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentPersonalChatBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalChatData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalListChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot

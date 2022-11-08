@@ -1,6 +1,8 @@
 package com.example.huseyinoral_bilgisayarmuhendisligitez.view.notePage
 
+import android.content.Intent
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,12 +12,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentNoteDetailsBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.NoteTitleData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.NoteTitleData
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class NoteDetailsFragment : Fragment() {
@@ -59,6 +62,14 @@ class NoteDetailsFragment : Fragment() {
 
         binding.noteDetailNoteUpdateButton.setOnClickListener {
             updateNoteDetail()
+        }
+
+        //ses izin
+        binding.noteDetailNoteTitleSpeakButton.setOnClickListener {
+            speakTitleButton()
+        }
+        binding.noteDetailNoteDetaySpeakButton.setOnClickListener {
+            speakNoteEditButton()
         }
     }
 
@@ -138,5 +149,36 @@ class NoteDetailsFragment : Fragment() {
         database.child("NoteList").child(noteID).setValue(noteDetailsData)
 
         noteDetailsToNoteTitle()
+    }
+
+    //Ses izin
+    fun speakTitleButton(){
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Bir şey söyleyiniz.")
+        startActivityForResult(intent,100)
+    }
+    fun speakNoteEditButton(){
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Bir şey söyleyiniz.")
+        startActivityForResult(intent,101)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //NotTitleSpeakButton
+        if (requestCode == 100 && data != null) {
+            val res: ArrayList<String> = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+            binding.noteDetailsNotetitleEdit.setText(res[0])
+        }
+        //NotDetailsSpeakButton
+        if (requestCode == 101 && data != null) {
+            val res: ArrayList<String> = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
+            binding.noteDetailsNotetDetailTextEdit.setText(res[0])
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

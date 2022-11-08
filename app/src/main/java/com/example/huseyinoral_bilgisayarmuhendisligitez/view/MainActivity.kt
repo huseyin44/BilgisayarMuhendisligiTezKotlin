@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.registerPageActivity2, R.id.loginPageActivity2,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
                 R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment,
                 R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment,R.id.noteDetailsFragment,R.id.noteTitlePageFragment,
-                R.id.stepCounterActivity
+                R.id.stepCounterActivity,R.id.nearByMapsFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -78,51 +78,6 @@ class MainActivity : AppCompatActivity(){
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-
-    fun speakTitleButton(view: View){
-        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Bir şey söyleyiniz.")
-        startActivityForResult(intent,100)
-    }
-    fun speakNoteEditButton(view: View){
-        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Bir şey söyleyiniz.")
-        startActivityForResult(intent,101)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
-        //NotTitleSpeakButton
-        if (requestCode == 100 && data != null) {
-            val res: ArrayList<String> =
-                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
-            val editText: EditText = findViewById<View>(R.id.noteDetails_notetitle_edit) as EditText
-            editText.setText(res[0])
-        }
-        //NotDetailsSpeakButton
-        if (requestCode == 101 && data != null) {
-            val res: ArrayList<String> =
-                data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS) as ArrayList<String>
-            val editText: EditText =
-                findViewById<View>(R.id.noteDetails_notetDetailText_edit) as EditText
-            editText.setText(res[0])
-        }
-
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

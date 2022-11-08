@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalChatData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.UserPublicChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.UserPublicChatData
 
 class PersonalRecyclerAdapter(val personalChatMessageList:ArrayList<PersonalChatData>): RecyclerView.Adapter<PersonalRecyclerAdapter.PersonalListViewHolder>() {
     class PersonalListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

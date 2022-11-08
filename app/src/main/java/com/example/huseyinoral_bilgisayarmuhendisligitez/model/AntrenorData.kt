@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.view.model
+package com.example.huseyinoral_bilgisayarmuhendisligitez.model
 
 data class AntrenorData(
     val email: String?,

@@ -51,7 +51,6 @@ class LoginPageActivity : AppCompatActivity() {
         Log.d("RegisterPageActivity","Anasayfa Butonuna Tıklandı")
         val intent = Intent(this, RegisterPageActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
     private fun loginPageToHomePage(){

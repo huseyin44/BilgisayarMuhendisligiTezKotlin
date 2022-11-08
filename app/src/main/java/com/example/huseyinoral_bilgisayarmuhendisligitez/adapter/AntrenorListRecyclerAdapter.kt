@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.AntrenorData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalChatFragment
 
@@ -56,6 +56,7 @@ class AntrenorListRecyclerAdapter(val antrenorList:ArrayList<AntrenorData>):Recy
             actionAntrenorListFragment2ToPaymentPageFragment(toUserid.toString(),toUserPayment.toString(),toUserName.uppercase(),toUserProfilUrl.toString())
             holder.itemView.findNavController().navigate(action)
         }
+        Log.d("deneme",antrenorList[position].aylikucret.toString())
     }
 
     override fun getItemCount(): Int {

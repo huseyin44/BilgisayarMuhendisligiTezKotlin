@@ -32,6 +32,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_personalchat).isVisible=false
             navView.menu.findItem(R.id.menu_notedefteri).isVisible=false
             navView.menu.findItem(R.id.menu_adimSayar).isVisible=false
+            navView.menu.findItem(R.id.menu_maps).isVisible=false
             Log.d("Navigationitemvisibility","GuncellKullanici Yok")
         }
         if(guncelkullanici!=null){
@@ -48,6 +49,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_personalchat).isVisible=true
             navView.menu.findItem(R.id.menu_notedefteri).isVisible=true
             navView.menu.findItem(R.id.menu_adimSayar).isVisible=true
+            navView.menu.findItem(R.id.menu_maps).isVisible=true
             Log.d("Navigationitemvisibility","GuncellKullanici VAR")
         }
     }
@@ -123,7 +125,7 @@ class NavigationItemClass {
                 }
                 R.id.menu_maps -> {
                     binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.videoChatActivity)
+                    navController.navigate(R.id.nearByMapsFragment)
                     true
                 }
                 R.id.menu_cikisyap -> {
@@ -177,6 +179,9 @@ class NavigationItemClass {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.stepCounterActivity) {
+                navigationitemvisibility(navView)
+            }
+            if(destination.id == R.id.nearByMapsFragment) {
                 navigationitemvisibility(navView)
             }
         }

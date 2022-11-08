@@ -12,29 +12,24 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.speech.RecognizerIntent
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityRegisterPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import java.util.ArrayList
 
 class RegisterPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterPageBinding
@@ -42,7 +37,7 @@ class RegisterPageActivity : AppCompatActivity() {
     private lateinit var storage : FirebaseStorage
     private lateinit var auth : FirebaseAuth
     private lateinit var database : FirebaseFirestore
-    val db= Firebase.firestore
+    private val db= Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +55,18 @@ class RegisterPageActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener{
             if(isInputCorrect()){
                 registerPageFun()
+            }
+        }
+
+        //galeri izin kontrol
+        binding.registerPageImageView.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                //izni almamışız
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
+            } else {
+                //izin zaten varsa
+                val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(galeriIntent,2)
             }
         }
     }
@@ -106,8 +113,8 @@ class RegisterPageActivity : AppCompatActivity() {
             if(task.isSuccessful){
                 Log.d("RegisterLog","Firebase Auth Başarılı Oluştu")
 
-                val secilenGorsel= secilenGorsel
-                if (secilenGorsel != null) {
+
+                if (secilenRegisterGorsel != null) {
                     Log.d("RegisterLog","RegisterLog Profil Resmi Seçildi")
                     //Kayıt Olduktan Sonra Giriş
                     signIn()
@@ -121,7 +128,7 @@ class RegisterPageActivity : AppCompatActivity() {
                     val gorselReference = reference.child("ProfileImages").child(gorselIsmi)
 
                     //Resmi Firebase Cloud Stora yükleme
-                    gorselReference.putFile(secilenGorsel).addOnSuccessListener {
+                    gorselReference.putFile(secilenRegisterGorsel!!).addOnSuccessListener {
                         //Resim Cloud Stora gönderildikten sonra onun urlni alma
                         val yuklenenGorselReference = FirebaseStorage.getInstance().reference.child("ProfileImages").child(gorselIsmi)
                         yuklenenGorselReference.downloadUrl.addOnSuccessListener { uri ->
@@ -164,8 +171,7 @@ class RegisterPageActivity : AppCompatActivity() {
         val email=binding.registerEmail.text
         val sifre =binding.registerPassword.text
 
-        val secilenGorsel= secilenGorsel
-        if (secilenGorsel == null){
+        if (secilenRegisterGorsel == null){
             Toast.makeText(this, "Profil resmi seçilmei", Toast.LENGTH_LONG).show()
             return false
         }
@@ -218,89 +224,43 @@ class RegisterPageActivity : AppCompatActivity() {
     }
 
     //GALERİ İZİNLERİYLE İLGİLİ
-    var secilenGorsel : Uri? = null
-    var secilenBitmap : Bitmap? = null
-    var secilenUserProfilGorsel : Uri? = null
-    var secilenUserProfileBitmap2 : Bitmap? = null
-
-    fun registerImageclick(view: View){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            //izni almamışız
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
-        } else {
-            //izin zaten varsa
-            val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(galeriIntent,2)
-        }
-    }
-    fun userProfileImageclick(view: View){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            //izni almamışız
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
-        } else {
-            //izin zaten varsa
-            val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(galeriIntent,3)
-        }
-    }
-
+    var secilenRegisterGorsel:Uri?=null
+    var secilenRegisterBitMap:Bitmap?=null
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
         if (requestCode == 1){
-            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 //izin verilince yapılacaklar
                 val galeriIntent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(galeriIntent,2)
-                startActivityForResult(galeriIntent,3)
+
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
-            secilenGorsel = data.data
-            if (secilenGorsel != null) {
+            secilenRegisterGorsel = data.data
+            if (secilenRegisterGorsel != null) {
                 if (Build.VERSION.SDK_INT >= 28) {
-                    val source = ImageDecoder.createSource(this.contentResolver, secilenGorsel!!)
-                    secilenBitmap = ImageDecoder.decodeBitmap(source)
-                    val toolbar: ImageView = findViewById<View>(R.id.imageView) as ImageView
-                    toolbar.setImageBitmap(secilenBitmap)
+                    val source = ImageDecoder.createSource(this.contentResolver, secilenRegisterGorsel!!)
+                    secilenRegisterBitMap = ImageDecoder.decodeBitmap(source)
+                    val toolbar: ImageView = findViewById<View>(R.id.registerPage_imageView) as ImageView
+                    toolbar.setImageBitmap(secilenRegisterBitMap)
                 } else {
-                    secilenBitmap =
-                        MediaStore.Images.Media.getBitmap(this.contentResolver, secilenGorsel)
-                    val toolbar: ImageView = findViewById<View>(R.id.imageView) as ImageView
-                    toolbar.setImageBitmap(secilenBitmap)
+                    secilenRegisterBitMap = MediaStore.Images.Media.getBitmap(this.contentResolver, secilenRegisterGorsel)
+                    val toolbar: ImageView = findViewById<View>(R.id.registerPage_imageView) as ImageView
+                    toolbar.setImageBitmap(secilenRegisterBitMap)
                 }
             }
         }
-        //userprofile profil resmi güncellemesi için
-        if (requestCode == 3 && resultCode == Activity.RESULT_OK && data != null) {
-            secilenUserProfilGorsel = data.data
-            if (secilenUserProfilGorsel != null) {
-                if (Build.VERSION.SDK_INT >= 28) {
-                    val source =
-                        ImageDecoder.createSource(this.contentResolver, secilenUserProfilGorsel!!)
-                    secilenUserProfileBitmap2 = ImageDecoder.decodeBitmap(source)
-                    val toolbar: ImageView =
-                        findViewById<View>(R.id.userprofile_edit_image) as ImageView
-                    toolbar.setImageBitmap(secilenUserProfileBitmap2)
-                } else {
-                    secilenUserProfileBitmap2 = MediaStore.Images.Media.getBitmap(
-                        this.contentResolver,
-                        secilenUserProfilGorsel
-                    )
-                    val toolbar: ImageView =
-                        findViewById<View>(R.id.userprofile_edit_image) as ImageView
-                    toolbar.setImageBitmap(secilenUserProfileBitmap2)
-                }
-            }
-        }
+
 
         super.onActivityResult(requestCode, resultCode, data)
     }

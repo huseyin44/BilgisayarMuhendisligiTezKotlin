@@ -16,7 +16,6 @@
         android:layout_marginEnd="186dp"
         android:layout_marginBottom="31dp"
         android:background="@android:color/transparent"
-        android:onClick="userProfileImageclick"
         android:scaleType="fitXY"
         android:src="@drawable/profilresmisecin"
         app:layout_constraintBottom_toTopOf="@+id/userprofile_edittext_isim"

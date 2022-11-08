@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentAntrenorListBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.AntrenorData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AntrenorListFragment : Fragment() {

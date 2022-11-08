@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.AntrenorPaymentData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorPaymentData
 
 class AntrenorPaymentRecyclerAdapter (val antrenorPaymentTitleList:ArrayList<AntrenorPaymentData>): RecyclerView.Adapter<AntrenorPaymentRecyclerAdapter.AntrenorPaymentListViewHolder>() {
 
@@ -21,7 +21,7 @@ class AntrenorPaymentRecyclerAdapter (val antrenorPaymentTitleList:ArrayList<Ant
     }
 
     override fun onBindViewHolder(holder: AntrenorPaymentListViewHolder, position: Int) {
-        val isim="Hesabınıza"+" "+antrenorPaymentTitleList[position].toUsername+" Tarafından "+ antrenorPaymentTitleList[position].baslangicTarihi +" Tarihinde "+
+        val isim="Hesabınıza"+" "+antrenorPaymentTitleList[position].fromUsername+" Tarafından "+ antrenorPaymentTitleList[position].baslangicTarihi +" Tarihinde "+
                 antrenorPaymentTitleList[position].odenenUcret+" TL Yatırılmıştır. Sözleşme Bitiş Tarihi : "+antrenorPaymentTitleList[position].bitisTarihi
         holder.itemView.findViewById<TextView>(R.id.antrenorPayment_recylcer_text).text=isim
     }

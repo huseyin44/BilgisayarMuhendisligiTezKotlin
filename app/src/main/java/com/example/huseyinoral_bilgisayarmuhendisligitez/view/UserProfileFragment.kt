@@ -15,8 +15,8 @@ import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPaymentRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PersonalListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentUserProfileBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.AntrenorPaymentData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalListChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorPaymentData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -96,7 +96,7 @@ class UserProfileFragment : Fragment() {
                 val antrenorPaymentList = snapshot.getValue(AntrenorPaymentData::class.java)
 
                 if (antrenorPaymentList != null) {
-                    val isim=antrenorPaymentList.toUsername
+                    val isim=antrenorPaymentList.fromUsername
                     val odenenucret=antrenorPaymentList.odenenUcret
                     val baslangicTarihi=antrenorPaymentList.baslangicTarihi
                     val bitisTarihi=antrenorPaymentList.bitisTarihi

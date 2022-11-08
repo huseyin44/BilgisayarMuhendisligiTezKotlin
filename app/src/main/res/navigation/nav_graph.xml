@@ -213,9 +213,22 @@
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.RegisterPageActivity"
         android:label="activity_register_page"
         tools:layout="@layout/activity_register_page" />
-    <activity
-        android:id="@+id/videoChatActivity"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.VideoChatActivity"
-        android:label="activity_video_chat"
-        tools:layout="@layout/activity_video_chat" />
+    <fragment
+        android:id="@+id/nearByMapsFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.mapsPage.NearByMapsFragment"
+        android:label="GYM Listele"
+        tools:layout="@layout/fragment_near_by_maps" >
+        <action
+            android:id="@+id/action_nearByMapsFragment_to_locationListFragment"
+            app:destination="@id/locationListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationListFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.mapsPage.LocationListFragment"
+        android:label="Yakındaki GYM Listesi"
+        tools:layout="@layout/fragment_location_list" >
+        <argument
+            android:name="locationList"
+            app:argType="com.example.huseyinoral_bilgisayarmuhendisligitez.model.NearByLocationData[]" />
+    </fragment>
 </navigation>

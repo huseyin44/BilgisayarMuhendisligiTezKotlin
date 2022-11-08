@@ -69,8 +69,8 @@
         </item>
         <item
             android:id="@+id/menu_maps"
-            android:icon="@drawable/ic_baseline_directions_run_24"
-            android:title="MAPS"
+            android:icon="@drawable/ic_baseline_not_listed_location_24"
+            android:title="GYM Listesi"
             app:showAsAction="never"
             >
         </item>

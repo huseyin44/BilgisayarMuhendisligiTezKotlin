@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.mapsPage.NearByMapsFragment"
+    android:background="@drawable/loginfragment_constraintlayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="440dp"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nearBylocation_YakindakiYerler_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:textAlignment="viewStart"
+            android:text="Yakındaki GYM' leri listele"
+            android:textColor="#9E1010"
+            android:background="@android:color/transparent"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:visibility="invisible"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

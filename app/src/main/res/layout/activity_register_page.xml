@@ -151,19 +151,18 @@
         android:inputType="number"
         android:textSize="23sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/registerPage_imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_radiogroup" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/registerPage_imageView"
         android:layout_width="200dp"
         android:layout_height="110dp"
         android:layout_marginStart="46dp"
         android:layout_marginEnd="165dp"
         android:layout_marginBottom="12dp"
-        android:onClick="registerImageclick"
         android:scaleType="centerInside"
         android:src="@drawable/profilresmisecin"
         app:layout_constraintBottom_toTopOf="@+id/register_button"
@@ -186,5 +185,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPage_imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

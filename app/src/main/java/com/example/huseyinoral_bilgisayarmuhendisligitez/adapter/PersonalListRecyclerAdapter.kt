@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.model.PersonalListChatData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalListChatFragmentDirections
 import java.util.*
@@ -40,7 +40,7 @@ class PersonalListRecyclerAdapter(val personalChatList:ArrayList<PersonalListCha
             holder.itemView.findNavController().navigate(action)
         }
         holder.itemView.findViewById<TextView>(R.id.personalListChatRecycler_isimsoyisim).setOnClickListener{
-            val action= PersonalListChatFragmentDirections.actionPersonalListChatFragmentToPersonalChatFragment(toUserId.toString(),url.toString(),isim.toString().toUpperCase(Locale.ROOT))
+            val action= PersonalListChatFragmentDirections.actionPersonalListChatFragmentToPersonalChatFragment(toUserId.toString(),url.toString(),isim.toString().uppercase(Locale.ROOT))
             holder.itemView.findNavController().currentDestination?.label=isim.toString()
             holder.itemView.findNavController().navigate(action)
         }
