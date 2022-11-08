@@ -128,4 +128,9 @@ class UserProfileFragment : Fragment() {
         val action=UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileUpdateFragment()
         findNavController().navigate(action)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -90,4 +90,9 @@ class HomePageFragment : Fragment() {
         val action=HomePageFragmentDirections.actionHomePageFragmentToUserProfileFragment()
         findNavController().navigate(action)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

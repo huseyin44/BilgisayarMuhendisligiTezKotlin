@@ -199,4 +199,8 @@ class UserProfileUpdateFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
