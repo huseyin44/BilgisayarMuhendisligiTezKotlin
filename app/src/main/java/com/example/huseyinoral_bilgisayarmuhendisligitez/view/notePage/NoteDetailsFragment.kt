@@ -9,10 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentNoteDetailsBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.NoteTitleData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -28,13 +30,6 @@ class NoteDetailsFragment : Fragment() {
     private val realtimeDatabase= Firebase.database
     private val args : NoteDetailsFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if(args.noteTitleToNoteDetails=="NoteTitleToNoteDetails"){
-            readNoteTitleToDetails()
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,9 +41,13 @@ class NoteDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(args.noteTitleToNoteDetails=="NoteTitleToNoteDetails"){
+            readNoteTitleToDetails()
+            binding.noteDetailNoteUpdateButton.visibility=View.VISIBLE
+        }
+
         binding.noteDetailNoteSaveButton.setOnClickListener {
             writeNote()
-            noteDetailsToNoteTitle()
         }
 
         binding.noteDetailNoteBackButton.setOnClickListener {
@@ -79,6 +78,8 @@ class NoteDetailsFragment : Fragment() {
     }
 
     private fun writeNote(){
+        val fromUserID = FirebaseAuth.getInstance().currentUser!!.uid
+
         val dateCurrent = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val dateClock = dateCurrent.format(formatter)
@@ -86,22 +87,26 @@ class NoteDetailsFragment : Fragment() {
         val noteTitleText=binding.noteDetailsNotetitleEdit.text.toString()
         val noteDetailsText=binding.noteDetailsNotetDetailTextEdit.text.toString()
 
-        val realtimeDatabaseUserPublic=realtimeDatabase.getReference("NoteList").push()
+        val realtimeDatabaseUserPublic=realtimeDatabase.getReference("/NoteList/$fromUserID").push()
 
         val noteDetailsData = NoteTitleData(realtimeDatabaseUserPublic.key,noteTitleText,noteDetailsText,dateClock.toString())
 
         realtimeDatabaseUserPublic.setValue(noteDetailsData).addOnSuccessListener {
             Log.d("NoteDetailsFragment","NoteDetailsFragment Veriler RealtimeDatabase Gönderildi.")
+            noteDetailsToNoteTitle()
         }.
         addOnFailureListener { exception ->
             Log.d("NoteDetailsFragment","NoteDetailsFragment Text Gönderilemedi")
             Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
         }
+
     }
 
     private fun readNoteTitleToDetails(){
+        val fromUserID = FirebaseAuth.getInstance().currentUser!!.uid
+
         val noteID=args.noteDetailsId
-        val ref = FirebaseDatabase.getInstance().getReference("/NoteList/$noteID")
+        val ref = FirebaseDatabase.getInstance().getReference("/NoteList/$fromUserID/$noteID")
 
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -128,20 +133,22 @@ class NoteDetailsFragment : Fragment() {
     }
 
     private fun deleteNoteDetail(){
+        val fromUserID = FirebaseAuth.getInstance().currentUser!!.uid
+
         val noteID=args.noteDetailsId
-        val ref = FirebaseDatabase.getInstance().getReference("/NoteList/$noteID")
+        val ref = FirebaseDatabase.getInstance().getReference("/NoteList/$fromUserID/$noteID")
         ref.removeValue()
     }
 
     private lateinit var database: DatabaseReference
     private fun updateNoteDetail(){
-        val noteID=args.noteDetailsId
+        val noteID=if(args.noteDetailsId.isNullOrBlank()) "Boş Sayfa" else args.noteDetailsId
 
         val dateCurrent = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         val dateClock = dateCurrent.format(formatter)
-        val noteTitleText=binding.noteDetailsNotetitleEdit.text.toString()
-        val noteDetailsText=binding.noteDetailsNotetDetailTextEdit.text.toString()
+        val noteTitleText=if(binding.noteDetailsNotetitleEdit.text.isNullOrBlank()) "Başlık Boş" else binding.noteDetailsNotetitleEdit.text.toString()
+        val noteDetailsText=if(binding.noteDetailsNotetDetailTextEdit.text.isNullOrBlank()) " " else binding.noteDetailsNotetDetailTextEdit.text.toString()
 
         val noteDetailsData = NoteTitleData(noteID,noteTitleText,noteDetailsText,dateClock.toString())
 
@@ -182,8 +189,5 @@ class NoteDetailsFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

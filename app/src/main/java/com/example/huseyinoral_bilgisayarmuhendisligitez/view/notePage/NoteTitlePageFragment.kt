@@ -19,6 +19,7 @@ import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.NoteTitleData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.UserPublicChatData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalChatFragmentArgs
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,11 +33,6 @@ class NoteTitlePageFragment : Fragment() {
     private lateinit var noteTitleAdapter: NoteTitleRecyclerAdapter
     var notetitleList = ArrayList<NoteTitleData>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        readNoteTitleList()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,6 +43,9 @@ class NoteTitlePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        readNoteTitleList()
+
         binding.noteAdd.setOnClickListener {
             noteTitleToNoteDetails()
         }
@@ -58,7 +57,9 @@ class NoteTitlePageFragment : Fragment() {
     }
 
     private fun readNoteTitleList(){
-        val ref = FirebaseDatabase.getInstance().getReference("/NoteList")
+        val fromUserID = FirebaseAuth.getInstance().currentUser!!.uid
+
+        val ref = FirebaseDatabase.getInstance().getReference("/NoteList/$fromUserID")
 
         ref.addChildEventListener(object: ChildEventListener {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -95,8 +96,5 @@ class NoteTitlePageFragment : Fragment() {
         })
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

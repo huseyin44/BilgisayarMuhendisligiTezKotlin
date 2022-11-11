@@ -156,6 +156,9 @@
         <action
             android:id="@+id/action_noteDetailsFragment_to_noteTitlePageFragment"
             app:destination="@id/noteTitlePageFragment" />
+        <action
+            android:id="@+id/action2_noteDetailsFragment_to_noteTitlePageFragment"
+            app:destination="@id/noteTitlePageFragment" />
         <argument
             android:name="noteTitleToNoteDetails"
             app:argType="string" />
@@ -174,6 +177,9 @@
         <action
             android:id="@+id/action_noteTitlePageFragment_self"
             app:destination="@id/noteTitlePageFragment" />
+        <action
+            android:id="@+id/action_noteTitlePageFragment_to_noteDetailsFragment2"
+            app:destination="@id/noteDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentPageFragment"
