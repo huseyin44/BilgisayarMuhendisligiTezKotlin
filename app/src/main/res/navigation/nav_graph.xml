@@ -10,36 +10,12 @@
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.HomePageFragment"
         tools:layout="@layout/fragment_home_page" >
         <action
-            android:id="@+id/action_homePageFragment_to_antrenorListFragment2"
-            app:destination="@id/antrenorListFragment2" />
-        <action
-            android:id="@+id/action_homePageFragment_to_tipsAndAdviceFragment2"
-            app:destination="@id/tipsAndAdviceFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_bodyMassIndexFragment"
-            app:destination="@id/bodyMassIndexFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_sportsExerciseFragment"
-            app:destination="@id/sportsExerciseFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_publicChatFragment"
-            app:destination="@id/publicChatFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_personalChatFragment"
-            app:destination="@id/personalChatFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_personalListChatFragment"
-            app:destination="@id/personalListChatFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_noteTitlePageFragment"
-            app:destination="@id/noteTitlePageFragment" />
-        <action
             android:id="@+id/action_homePageFragment_to_loginPageActivity2"
             app:destination="@id/loginPageActivity2"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homePageFragment_to_photosShareFragment"
+            app:destination="@id/photosShareFragment" />
     </fragment>
     <fragment
         android:label="BODY MASS INDEX HESAPLAMA"
@@ -236,5 +212,14 @@
         <argument
             android:name="locationList"
             app:argType="com.example.huseyinoral_bilgisayarmuhendisligitez.model.NearByLocationData[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/photosShareFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.PhotosShareFragment"
+        android:label="Fotoğraf Paylaş"
+        tools:layout="@layout/fragment_photos_share" >
+        <action
+            android:id="@+id/action_photosShareFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
     </fragment>
 </navigation>

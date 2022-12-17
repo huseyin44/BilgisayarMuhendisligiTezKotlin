@@ -52,6 +52,7 @@ class PublicChatFragment : Fragment() {
         }
     }
 
+
     fun hideSoftKeyboard(activity: Activity) {
         if (activity.getCurrentFocus() == null){
             return
@@ -136,11 +137,6 @@ class PublicChatFragment : Fragment() {
                 messageList.clear()
             }
         })
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
 

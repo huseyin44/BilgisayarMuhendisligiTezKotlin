@@ -50,6 +50,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_notedefteri).isVisible=true
             navView.menu.findItem(R.id.menu_adimSayar).isVisible=true
             navView.menu.findItem(R.id.menu_maps).isVisible=true
+
             Log.d("Navigationitemvisibility","GuncellKullanici VAR")
         }
     }

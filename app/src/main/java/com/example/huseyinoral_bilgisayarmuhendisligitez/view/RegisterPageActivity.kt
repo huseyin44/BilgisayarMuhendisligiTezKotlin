@@ -2,7 +2,6 @@ package com.example.huseyinoral_bilgisayarmuhendisligitez.view
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
-import android.util.AttributeSet
 import android.util.Log
 import android.util.Patterns
 import android.view.View
@@ -50,8 +48,12 @@ class RegisterPageActivity : AppCompatActivity() {
         database = FirebaseFirestore.getInstance()
 
         binding.registerRadiogroup.setOnCheckedChangeListener(){ _, _ ->
-            registerRadioGrupFun()
+            registerAntrenorRadioFun()
         }
+        binding.registerRadiogroupCinsiyet.setOnCheckedChangeListener { group, checkedId ->
+            registerCinsiyetRadioFun()
+        }
+
         binding.registerButton.setOnClickListener{
             if(isInputCorrect()){
                 registerPageFun()
@@ -77,21 +79,48 @@ class RegisterPageActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    //radiobutton check
-    private fun registerRadioGrupFun():String{
+
+    //radiobutton kadın erkek
+    private fun registerCinsiyetRadioFun():String{
+        var cinsiyet=""
+        if(binding.radiobuttonKadin.isChecked){
+            binding.radiobuttonErkek.isChecked=false
+            cinsiyet="kadın"
+            Log.d("RegisterLog","kadin")
+        }
+        else if(binding.radiobuttonErkek.isChecked){
+            binding.radiobuttonKadin.isChecked=false
+            cinsiyet="erkek"
+            Log.d("RegisterLog","erkek")
+        }
+        binding.radiobuttonCinsiyetText.text=cinsiyet
+        return cinsiyet
+    }
+
+    //radiobutton sporcu antrenor check
+    private fun registerAntrenorRadioFun():String{
         var uyetipi=""
         if(binding.radiobuttonSporcu.isChecked){
             binding.radiobuttonAntrenor.isChecked=false
             uyetipi="sporcu"
             Log.d("RegisterLog","sporcu")
 
+            //Antrenorle ilgi bölümlerin görünürlüğü
+            binding.registerRadiogroupEgitmenTuru.isVisible=false
+            binding.registerRadiogroupEgitmenTuru2.isVisible=false
+            binding.registerAntrenorTanit.isVisible=false
             binding.registerAylikucret.isVisible=false
         }
+
         else if(binding.radiobuttonAntrenor.isChecked){
             binding.radiobuttonSporcu.isChecked=false
             uyetipi="antrenör"
             Log.d("RegisterLog","antrenör")
 
+            //Antrenorle ilgi bölümlerin görünürlüğü
+            binding.registerRadiogroupEgitmenTuru.isVisible=true
+            binding.registerRadiogroupEgitmenTuru2.isVisible=true
+            binding.registerAntrenorTanit.isVisible=true
             binding.registerAylikucret.isVisible=true
         }
         binding.radiobuttonText.text=uyetipi
@@ -99,20 +128,29 @@ class RegisterPageActivity : AppCompatActivity() {
     }
 
     fun registerPageFun() {
-        //radiobutton kontrol
         val uyetipi=binding.radiobuttonText.text.toString()
+        val cinsiyet=binding.radiobuttonCinsiyetText.text.toString()
         val email=binding.registerEmail.text.toString()
         val sifre=binding.registerPassword.text.toString()
         val isim =binding.registerNameText.text.toString()
         val soyisim=binding.registerSurnameText.text.toString()
+        val boy=binding.registerBoy.text.toString()
+        val kilo=binding.registerKilo.text.toString()
         val aylikucret=binding.registerAylikucret.text.toString()
+        val antrenorTanit=binding.registerAntrenorTanit.text.toString()
+        //egitmen ceşitleri
+        val fitness= binding.checkBoxFitness.isChecked
+        val kickBox=binding.checkBoxKickBox.isChecked
+        val yoga=binding.checkBoxYoga.isChecked
+        val pilates=binding.checkBoxPilates.isChecked
+        val yuzme=binding.checkBoxYuzme.isChecked
+        val futbol=binding.checkBoxFutbol.isChecked
 
         //kullanıcı email şifre kaydetme
         auth.createUserWithEmailAndPassword(email,sifre).addOnCompleteListener{ task ->
             //kayit başarıyla oluşturulduysa
             if(task.isSuccessful){
                 Log.d("RegisterLog","Firebase Auth Başarılı Oluştu")
-
 
                 if (secilenRegisterGorsel != null) {
                     Log.d("RegisterLog","RegisterLog Profil Resmi Seçildi")
@@ -135,13 +173,23 @@ class RegisterPageActivity : AppCompatActivity() {
                             val downloadUrl = uri.toString()
                             //veritabanına diğer verileri kaydetme
                             val postHashMap = hashMapOf<String, Any>()
+                            postHashMap["userId"]=userID
                             postHashMap["profilresmiurl"] = downloadUrl
                             postHashMap["email"] = email
                             postHashMap["isim"] = isim
                             postHashMap["soyisim"] = soyisim
-                            postHashMap["uyetipi"] = uyetipi
-                            postHashMap["userId"]=userID
+                            postHashMap["boy"] = boy
+                            postHashMap["kilo"] = kilo
+                            postHashMap["cinsiyet"] = cinsiyet
                             postHashMap["aylikUcret"]=aylikucret
+                            postHashMap["antrenorTanit"]=antrenorTanit
+                            postHashMap["uyetipi"] = uyetipi
+                            postHashMap["fitness"]=fitness
+                            postHashMap["kickBox"]=kickBox
+                            postHashMap["yoga"]=yoga
+                            postHashMap["pilates"]=pilates
+                            postHashMap["yuzme"]=yuzme
+                            postHashMap["futbol"]=futbol
 
                             db.collection("UserDetailPost").document(userID).set(postHashMap).addOnSuccessListener  {
                                 Log.d("RegisterLog","Veriler FireStore Database Başarılı Gönderildi")
@@ -170,17 +218,20 @@ class RegisterPageActivity : AppCompatActivity() {
         val soyisim =binding.registerSurnameText.text
         val email=binding.registerEmail.text
         val sifre =binding.registerPassword.text
+        val boy=binding.registerBoy.text
+        val kilo=binding.registerKilo.text
+        val antrenorTanit=binding.registerAntrenorTanit.text
 
         if (secilenRegisterGorsel == null){
-            Toast.makeText(this, "Profil resmi seçilmei", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Profil resmi seçilmeli.", Toast.LENGTH_LONG).show()
             return false
         }
         if (email.isNullOrBlank()) {
-            Toast.makeText(this, "Mail boş olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Mail boş olmamalı.", Toast.LENGTH_LONG).show()
             return false
         }
         if (email.toString().isValidEmail().not()) {
-            Toast.makeText(this, "Gecerli Email Adresi Olmalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Gecerli Email Adresi Olmalı.", Toast.LENGTH_LONG).show()
             return false
         }
         if (!email.toString().contains("@hotmail.com", ignoreCase = true) && !email.toString().contains("@gmail.com", ignoreCase = true)) {
@@ -188,27 +239,44 @@ class RegisterPageActivity : AppCompatActivity() {
             return false
         }
         if (sifre.isNullOrBlank()) {
-            Toast.makeText(this, "Şifre boş olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Şifre boş olmamalı.", Toast.LENGTH_LONG).show()
             return false
         }
         if (sifre.toString().length < 6) {
-            Toast.makeText(this, "Şifre 6 karekterden az olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Şifre 6 karekterden az olmamalı.", Toast.LENGTH_LONG).show()
             return false
         }
         if (isim.isNullOrBlank()) {
-            Toast.makeText(this, "İsim boş olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "İsim boş olmamalı.", Toast.LENGTH_LONG).show()
             return false
         }
         if (soyisim.isNullOrBlank()) {
-            Toast.makeText(this, "Soyisim boş olmamalı", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Soyisim boş olmamalı.", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if (boy.isNullOrBlank()) {
+            Toast.makeText(this, "Boy kısmı boş olmamalı.", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if (kilo.isNullOrBlank()) {
+            Toast.makeText(this, "Kilo kısmı boş olmamalı.", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if (antrenorTanit.isNullOrBlank() && binding.radiobuttonAntrenor.isChecked) {
+            Toast.makeText(this, "Kendini tanıt kısmı boş olmamalı.", Toast.LENGTH_LONG).show()
             return false
         }
         if (!binding.radiobuttonSporcu.isChecked && !binding.radiobuttonAntrenor.isChecked) {
             Toast.makeText(this, "Antrenör yada Sporcu işaretli olmalıdır", Toast.LENGTH_LONG).show()
             return false
         }
+        if (!binding.radiobuttonKadin.isChecked && !binding.radiobuttonErkek.isChecked) {
+            Toast.makeText(this, "Cinsiyet işaretli olmalıdır", Toast.LENGTH_LONG).show()
+            return false
+        }
         return true
     }
+
     //Kayıt Olduktan Sonra Direk Giriş Yapması için
     private fun signIn() {
         auth.signInWithEmailAndPassword(
@@ -242,7 +310,6 @@ class RegisterPageActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
@@ -260,7 +327,6 @@ class RegisterPageActivity : AppCompatActivity() {
                 }
             }
         }
-
 
         super.onActivityResult(requestCode, resultCode, data)
     }

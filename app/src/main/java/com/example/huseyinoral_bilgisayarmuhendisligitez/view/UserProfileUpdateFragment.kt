@@ -61,11 +61,11 @@ class UserProfileUpdateFragment : Fragment() {
         binding.userprofileEditImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 //izni almamışız
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),4)
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),3)
             } else {
                 //izin zaten varsa
                 val galeriIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                startActivityForResult(galeriIntent,3)
+                startActivityForResult(galeriIntent,4)
             }
         }
 
@@ -171,11 +171,11 @@ class UserProfileUpdateFragment : Fragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == 4){
+        if (requestCode == 3){
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 //izin verilince yapılacaklar
                 val galeriIntent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                startActivityForResult(galeriIntent,3)
+                startActivityForResult(galeriIntent,4)
 
             }
         }
@@ -199,8 +199,4 @@ class UserProfileUpdateFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

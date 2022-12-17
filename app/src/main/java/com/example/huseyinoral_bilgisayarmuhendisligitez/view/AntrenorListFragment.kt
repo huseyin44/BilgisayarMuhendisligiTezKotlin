@@ -68,18 +68,17 @@ class AntrenorListFragment : Fragment() {
                             val userId =document.get("userId") as String
                             val aylikucret =document.get("aylikUcret") as String
 
-                            val indirilenAntrenorList= AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl,userId,aylikucret)
-                            antrenorListesi.add(indirilenAntrenorList)
+                            //sadece antrenörler listelensin
+                            if(uyetipi=="antrenör"){
+                                val indirilenAntrenorList= AntrenorData(email,isim,soyisim,uyetipi,profilresmiurl,userId,aylikucret)
+                                antrenorListesi.add(indirilenAntrenorList)
+                            }
+
                         }
                         recyclerAntrenorAdapter.notifyDataSetChanged()
                     }
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

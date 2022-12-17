@@ -6,7 +6,7 @@
     tools:context=".view.chatPage.PersonalListChatFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="#42D122"
+        android:background="#8FEAE6E6"
         android:id="@+id/personalList_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

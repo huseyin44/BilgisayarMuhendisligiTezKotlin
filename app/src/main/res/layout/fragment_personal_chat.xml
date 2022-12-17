@@ -10,7 +10,7 @@
         android:id="@+id/personalChat_nestedscrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#61D11B"
+        android:background="#8FEAE6E6"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

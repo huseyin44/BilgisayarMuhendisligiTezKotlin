@@ -42,8 +42,4 @@ class LocationListFragment : Fragment() {
         binding.nearByLocationRecycler.adapter=recyclerNearByAdapter
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

@@ -26,6 +26,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -34,10 +35,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.classes.NavigationItemClass
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
@@ -73,6 +78,7 @@ class MainActivity : AppCompatActivity(){
         naviItemClass.navigationMenuItemSelect(navView,navController,binding)
         //NavigationDrawer itemlerinin görünürlüğü
         naviItemClass.navigationDrawerDestinationChanged(navView,navController)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

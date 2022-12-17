@@ -206,8 +206,4 @@ class PaymentPageFragment : Fragment() {
         inputMethodManager.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, 0)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
