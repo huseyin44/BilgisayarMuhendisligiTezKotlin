@@ -1,22 +1,17 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.view
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile
 
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPaymentRecyclerAdapter
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PersonalListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentUserProfileBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorPaymentData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PersonalListChatData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot

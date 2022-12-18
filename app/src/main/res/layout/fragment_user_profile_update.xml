@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginfragment_constraintlayout"
-    tools:context=".view.UserProfileUpdateFragment">
+    tools:context=".view.profile.UserProfileUpdateFragment">
 
     <ImageView
         android:id="@+id/userprofile_edit_image"

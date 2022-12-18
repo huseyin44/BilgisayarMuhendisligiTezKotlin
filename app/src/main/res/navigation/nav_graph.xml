@@ -51,16 +51,13 @@
             android:id="@+id/action_antrenorListFragment2_to_personalChatFragment"
             app:destination="@id/personalChatFragment" />
         <action
-            android:id="@+id/action_antrenorListFragment2_to_paymentPageFragment"
-            app:destination="@id/paymentPageFragment" />
-        <action
-            android:id="@+id/action_antrenorListFragment2_to_stepCounterActivity"
-            app:destination="@id/stepCounterActivity" />
+            android:id="@+id/action_antrenorListFragment2_to_antrenorProfileFragment"
+            app:destination="@id/antrenorProfileFragment" />
     </fragment>
     <fragment
         android:label="PROFİLİM"
         android:id="@+id/userProfileFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.UserProfileFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.UserProfileFragment"
         tools:layout="@layout/fragment_user_profile" >
 
         <action
@@ -85,7 +82,7 @@
     <fragment
         android:label="PROFİLİM"
         android:id="@+id/userProfileUpdateFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.UserProfileUpdateFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.UserProfileUpdateFragment"
         tools:layout="@layout/fragment_user_profile_update" >
         <action
             android:id="@+id/action_userProfileUpdateFragment_to_userProfileFragment"
@@ -221,5 +218,14 @@
         <action
             android:id="@+id/action_photosShareFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/antrenorProfileFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntrenorProfileFragment"
+        android:label="Antrenör Profili"
+        tools:layout="@layout/fragment_antrenor_profile" >
+        <argument
+            android:name="antrenor_id"
+            app:argType="string" />
     </fragment>
 </navigation>

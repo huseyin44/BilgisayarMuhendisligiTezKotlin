@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.view
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile
 
 import android.Manifest
 import android.app.Activity

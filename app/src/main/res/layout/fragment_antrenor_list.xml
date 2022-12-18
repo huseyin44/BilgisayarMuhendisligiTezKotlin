@@ -1,19 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.AntrenorListFragment"
-    android:background="@drawable/loginfragment_constraintlayout">
+    android:background="#8FEAE6E6"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="5dp">
+        <RadioGroup
+            android:id="@+id/antrenorList_radiogroup_egitmenTuru"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
 
+            <CheckBox
+                android:id="@+id/antrenorList_checkBox_fitness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fitness"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+            <CheckBox
+                android:id="@+id/antrenorList_checkBox_kickBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kick Box"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+            <CheckBox
+                android:id="@+id/antrenorList_checkBox_yoga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yoga"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+            <CheckBox
+                android:id="@+id/antrenorList_checkBox_pilates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilates "
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/antrenorList__radiogroup_egitmenTuru2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp">
+            <CheckBox
+                android:id="@+id/antrenorList_checkBox_yuzme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yüzme"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:textColor="@color/black" />
+            <CheckBox
+                android:id="@+id/antrenorList_checkBox_futbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Futbol"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/antrenorList_filtre"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:text="Filtrele"
+                android:textColor="#880808"
+                android:background="@android:color/transparent"
+                android:textStyle="italic"
+                android:textSize="19sp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/antrenorList_filtre_sifirla"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:text="sıfırla"
+                android:textColor="#880808"
+                android:gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:textStyle="italic"
+                android:textSize="19sp"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ANTRENORLER"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_marginStart="5dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/antrenorList_scrollView"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="4dp">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/antrenorListRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            android:layout_height="wrap_content" />
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

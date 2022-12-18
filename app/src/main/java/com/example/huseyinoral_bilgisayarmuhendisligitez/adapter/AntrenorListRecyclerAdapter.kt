@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -27,12 +28,19 @@ class AntrenorListRecyclerAdapter(val antrenorList:ArrayList<AntrenorData>):Recy
     }
 
     override fun onBindViewHolder(holder: AntrenorListViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.recycler_row_email).text=antrenorList[position].email
         holder.itemView.findViewById<TextView>(R.id.recycler_row_uyetipi).text=antrenorList[position].uyetipi
         holder.itemView.findViewById<TextView>(R.id.recycler_row_isimsoyisim).text=antrenorList[position].isim+" "+antrenorList[position].soyisim
         val url=antrenorList[position].profilresmiurl
         Glide.with(holder.itemView.context).load(url).into(holder.itemView.findViewById(R.id.recycler_row_profilresmiurl))
-        holder.itemView.findViewById<TextView>(R.id.recycler_row_ucretText).text="Aylık Ucreti : "+antrenorList[position].aylikucret+" TL"
+        holder.itemView.findViewById<TextView>(R.id.recycler_row_ucretText).text="Aylık Ücreti : "+antrenorList[position].aylikucret+" TL"
+        //antrenor branşlar
+        val fitness=if(antrenorList[position].fitness==true) "fitness" else ""
+        val kickbox=if(antrenorList[position].kickbox==true) "kickbox" else ""
+        val yoga=if(antrenorList[position].yoga==true) "yoga" else ""
+        val pilates=if(antrenorList[position].pilates==true) "pilates" else ""
+        val yuzme=if(antrenorList[position].yuzme==true) "yuzme" else ""
+        val futbol=if(antrenorList[position].futbol==true) "futbol" else ""
+        holder.itemView.findViewById<TextView>(R.id.recycler_row_antrenorBrans).text="BRANŞLARI : "+ fitness+" "+kickbox+" "+yoga+" "+pilates+" "+yuzme+" "+futbol
 
         //PersonalChat
         val toUserid=antrenorList[position].userId
@@ -44,19 +52,11 @@ class AntrenorListRecyclerAdapter(val antrenorList:ArrayList<AntrenorData>):Recy
             holder.itemView.findNavController().navigate(action)
         }
 
-        //PaymentPage
-        val toUserPayment=antrenorList[position].aylikucret
-        holder.itemView.findViewById<ImageView>(R.id.recycler_row_antrenorList_UcretImage).setOnClickListener{
-            val action=AntrenorListFragmentDirections.
-            actionAntrenorListFragment2ToPaymentPageFragment(toUserid.toString(),toUserPayment.toString(),toUserName.uppercase(),toUserProfilUrl.toString())
+        //AntrenorProfileDetails
+        holder.itemView.findViewById<AppCompatButton>(R.id.recycler_row_antrenorDetayliBilgi).setOnClickListener{
+            val action=AntrenorListFragmentDirections.actionAntrenorListFragment2ToAntrenorProfileFragment(toUserid.toString())
             holder.itemView.findNavController().navigate(action)
         }
-        holder.itemView.findViewById<TextView>(R.id.recycler_row_ucretText).setOnClickListener{
-            val action=AntrenorListFragmentDirections.
-            actionAntrenorListFragment2ToPaymentPageFragment(toUserid.toString(),toUserPayment.toString(),toUserName.uppercase(),toUserProfilUrl.toString())
-            holder.itemView.findNavController().navigate(action)
-        }
-        Log.d("deneme",antrenorList[position].aylikucret.toString())
     }
 
     override fun getItemCount(): Int {
