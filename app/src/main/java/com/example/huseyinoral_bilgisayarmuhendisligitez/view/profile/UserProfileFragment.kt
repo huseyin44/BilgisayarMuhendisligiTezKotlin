@@ -120,8 +120,8 @@ class UserProfileFragment : Fragment() {
     }
 
     private fun userProfileUpdatePage(){
-        val action=UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileUpdateFragment()
-        findNavController().navigate(action)
+        //val action=UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileUpdateFragment()
+        //findNavController().navigate(action)
     }
 
 }

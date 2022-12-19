@@ -2,14 +2,24 @@ package com.example.huseyinoral_bilgisayarmuhendisligitez.classes
 
 import android.app.Activity
 import android.util.Log
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityStepCounterBinding
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
 
 class NavigationItemClass {
 
@@ -96,7 +106,22 @@ class NavigationItemClass {
                 }
                 R.id.menu_profilduzenle -> {
                     binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
-                    navController.navigate(R.id.userProfileFragment)
+                    //kullanıcı antrenormu sporcumu ona göre profil sayfası
+                    val db : FirebaseFirestore=FirebaseFirestore.getInstance()
+                    val userID = FirebaseAuth.getInstance().currentUser!!.uid
+                    db.collection("UserDetailPost").document(userID).get()
+                        .addOnSuccessListener { result ->
+                            val uyeTipi = result.data?.get("uyetipi").toString()
+                            if(uyeTipi=="antrenör"){
+                                Log.d("NavigationItemProfil",uyeTipi)
+                                navController.navigate(R.id.userAntrenorProfileFragment)
+                            }
+                            if(uyeTipi=="sporcu"){
+                                Log.d("NavigationItemProfil",uyeTipi)
+                                navController.navigate(R.id.sporcuUserProfileFragment)
+                            }
+                        }
+
                     true
                 }
                 R.id.menu_vucutkitleindeksi -> {
@@ -158,7 +183,7 @@ class NavigationItemClass {
             if(destination.id == R.id.loginPageActivity2) {
                 navigationitemvisibility(navView)
             }
-            if(destination.id == R.id.userProfileFragment) {
+            if(destination.id == R.id.sporcuUserProfileFragment) {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.bodyMassIndexFragment) {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_launcher_background"
+        android:id="@+id/recyclerAntrenorProfilePhotoShare_sharePhoto"/>
+
+    <TextView
+        android:id="@+id/recyclerAntrenorProfilePhotoShare_yorumText"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginStart="5dp"
+        android:text="asddas"
+        android:inputType="textMultiLine"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

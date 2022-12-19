@@ -65,8 +65,7 @@ class MainActivity : AppCompatActivity(){
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.registerPageActivity2, R.id.loginPageActivity2,R.id.homePageFragment,R.id.tipsAndAdviceFragment,R.id.antrenorListFragment2,
-                R.id.userProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment,R.id.userProfileFragment,R.id.userProfileUpdateFragment,
-                R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment,R.id.noteDetailsFragment,R.id.noteTitlePageFragment,
+                R.id.sporcuUserProfileFragment,R.id.sportsExerciseFragment,R.id.bodyMassIndexFragment ,R.id.publicChatFragment,R.id.personalListChatFragment,R.id.personalChatFragment,R.id.noteDetailsFragment,R.id.noteTitlePageFragment,
                 R.id.stepCounterActivity,R.id.nearByMapsFragment
             ), drawerLayout
         )

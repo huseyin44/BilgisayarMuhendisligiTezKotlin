@@ -72,6 +72,7 @@ class PhotosShareFragment : Fragment() {
         //fotograf paylas
         binding.photosSharePaylasButon.setOnClickListener {
             writePhotoSharedByAntrenor()
+            Log.d("PhotosShareFragment","Fotoğraf Paylaş Butonuna Tıklandı")
         }
     }
 

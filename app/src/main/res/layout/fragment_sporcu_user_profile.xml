@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.profile.AntrenorProfileDetailFragment"
+    tools:context=".view.profile.SporcuUserProfileFragment"
     android:background="#BAC3C1C1">
 
     <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginTop="5dp">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/antrenorProfile_profilResmi"
+                android:id="@+id/sporcuUserProfile_profilResmi"
                 android:layout_width="150dp"
                 android:layout_height="120dp"
                 android:src="@drawable/ic_launcher_background" />
@@ -28,25 +28,25 @@
                 android:orientation="vertical"
                 android:layout_marginStart="5dp">
                 <TextView
-                    android:id="@+id/antrenorProfile_uyetipi"
+                    android:id="@+id/sporcuUserProfile_uyetipi"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:text="antrenor"
+                    android:text="sporcu"
+                    android:textSize="17sp"
+                    android:textStyle="italic"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/sporcuUserProfile_isim"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="isim"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"/>
                 <TextView
-                    android:id="@+id/antrenorProfile_isim"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:text="isim"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/black"/>
-                <TextView
-                    android:id="@+id/antrenorProfile_eposta"
+                    android:id="@+id/sporcuUserProfile_eposta"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:text="eposta"
@@ -59,90 +59,61 @@
                     android:layout_height="30dp"
                     android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/antrenorProfile_aylikucret"
-                        android:layout_width="200dp"
+                        android:id="@+id/sporcuUserProfile_cinsiyet"
+                        android:layout_width="55dp"
                         android:layout_height="30dp"
-                        android:text="ucret"
-                        android:textSize="16sp"
+                        android:text="CİNSİYET"
+                        android:textSize="14sp"
                         android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/sporcuUserProfile_boy"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:text="BOY"
+                        android:textSize="15sp"
+                        android:textStyle="italic"
                         android:gravity="center_vertical"
                         android:textColor="@color/black"/>
-                    <ImageView
-                        android:id="@+id/antrenorProfile_UcretImage"
-                        android:layout_width="30dp"
+                    <TextView
+                        android:id="@+id/sporcuUserProfile_kilo"
+                        android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_baseline_attach_money_24" />
+                        android:text="ucret"
+                        android:textSize="15sp"
+                        android:textStyle="italic"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <TextView
-            android:id="@+id/antrenorList_branslar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:inputType="textMultiLine"
-            android:text="Branşlar"
-            android:gravity="center_vertical"
-            android:textSize="17sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/antrenorList_antrenorDetayliBilgi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:inputType="textMultiLine"
-            android:text="Branşlar"
-            android:gravity="center_vertical"
-            android:textSize="17sp"
-            android:textColor="@color/black"
-            android:textStyle="italic"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Paylaşılan Gönderiler"
-            android:gravity="center_vertical"
-            android:textSize="22sp"
-            android:textColor="#980404"
-            android:textStyle="bold"/>
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/antrenorProfile_scrollView_paylasilanGonderiler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/antrenorProfile_recycler_paylasilanGonderiler"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"/>
-        </androidx.core.widget.NestedScrollView>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sporcuUserProfile_bilgilerimiGuncelle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Bilgilerimi Güncelle"
+            android:textColor="#880808"
+            android:background="@android:color/transparent"
+            android:textStyle="italic"
+            android:textSize="19sp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Antrenörün Öğrencileri"
+            android:text="Programlarım"
             android:gravity="center_vertical"
             android:textSize="20sp"
             android:textColor="#AC0906"
             android:textStyle="bold"/>
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/antrenorProfile_scrollView_antrenorOgrencileri"
+            android:id="@+id/sporcuUserProfile_scrollView_programlarim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -150,11 +121,38 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/antrenorProfile_recycler_antrenorOgrencileri"
+                android:id="@+id/sporcuUserProfile_recycler_programlarim"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Antrenörlerim"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textColor="#AC0906"
+            android:textStyle="bold"/>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/sporcuUserProfile_scrollView_antrenorlerim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sporcuUserProfile_recycler_antrenorlerim"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"/>
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
+
 
 </androidx.core.widget.NestedScrollView>
