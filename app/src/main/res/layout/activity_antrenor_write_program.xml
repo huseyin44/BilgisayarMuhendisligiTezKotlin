@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.profile.AntrenorWriteProgramActivity"
+    android:orientation="vertical"
+    android:background="#BAC3C1C1">
+
+    <EditText
+        android:id="@+id/writeAntrenor_mail"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:hint=" Sporcunun Mailini Yazınız."
+        android:inputType="number"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/writeAntrenor_programText"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:gravity="top"
+        android:hint=" Sporcu için program yaz."
+        android:inputType="textMultiLine"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/writeAntrenor_programEkle_button"
+        android:layout_width="270dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_height="65dp"
+        android:background="@drawable/text_corners"
+        android:text="Programı Ekle"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:textColor="#9A1414"/>
+
+
+</LinearLayout>

@@ -218,5 +218,14 @@
         android:id="@+id/userAntrenorProfileFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.UserAntrenorProfileFragment"
         android:label="PROFİLİM"
-        tools:layout="@layout/fragment_user_antrenor_profile" />
+        tools:layout="@layout/fragment_user_antrenor_profile" >
+        <action
+            android:id="@+id/action_userAntrenorProfileFragment_to_antrenorWriteProgramActivity"
+            app:destination="@id/antrenorWriteProgramActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/antrenorWriteProgramActivity"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntrenorWriteProgramActivity"
+        android:label="Sporcu İçin Program Yaz"
+        tools:layout="@layout/activity_antrenor_write_program" />
 </navigation>

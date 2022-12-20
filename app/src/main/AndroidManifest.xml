@@ -25,6 +25,13 @@
         android:theme="@style/Theme.HuseyinOral_BilgisayarMuhendisligiTez"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".AntrenorWriteProgramActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

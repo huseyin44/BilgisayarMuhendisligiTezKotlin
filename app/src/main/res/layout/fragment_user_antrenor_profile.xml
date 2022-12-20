@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.profile.UserAntrenorProfileFragment"
-    android:orientation="vertical"
     android:background="#BAC3C1C1">
 
     <LinearLayout
@@ -162,6 +161,42 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="ANTREMAN Programlarım"
+            android:gravity="center_vertical"
+            android:textSize="21sp"
+            android:textColor="#AC0906"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/antrenorUserProfile_programlarim_text_bossa"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:text="sadasd"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:visibility="gone"/>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/antrenorUserProfile_scrollView_programlarim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/antrenorUserProfile_recycler_programlarim"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -171,6 +206,16 @@
             android:textSize="20sp"
             android:textColor="#AC0906"
             android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/antrenorUserProfile_paylasimlarim_text_bossa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="sadasd"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:visibility="gone"/>
         <androidx.core.widget.NestedScrollView
             android:id="@+id/antrenorUserProfile_scrollView_paylasimlarim"
             android:layout_width="match_parent"
@@ -182,7 +227,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/antrenorUserProfile_recycler_paylasimlarim"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"/>
+                android:layout_height="200dp"/>
         </androidx.core.widget.NestedScrollView>
 
         <TextView
@@ -197,6 +242,16 @@
             android:textSize="20sp"
             android:textColor="#AC0906"
             android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/antrenorUserProfile_ogrencilerim_text_bossa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="sadasd"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:visibility="gone"/>
         <androidx.core.widget.NestedScrollView
             android:id="@+id/antrenorUserProfile_scrollView_ogrencilerim"
             android:layout_width="match_parent"
@@ -208,9 +263,9 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/antrenorUserProfile_recycler_ogrencilerim"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"/>
+                android:layout_height="match_parent"/>
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
