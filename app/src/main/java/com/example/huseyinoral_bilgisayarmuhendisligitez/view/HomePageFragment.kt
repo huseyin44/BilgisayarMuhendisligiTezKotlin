@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PhotosShareRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.UserPublicRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentHomePageBinding
@@ -21,6 +22,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -44,7 +46,6 @@ class HomePageFragment : Fragment() {
             findNavController().navigate(action)
             activity?.finish()
         }
-
     }
 
     override fun onCreateView(
@@ -107,11 +108,6 @@ class HomePageFragment : Fragment() {
                     val veriler= PhotoSharedByAntrenorData(id,isim,userid,yorumtext, profilurl,paylasilanFotoUrl,tarih)
 
                     photoList.add(veriler)
-
-                    //sayfanın sondan başlaması
-                    binding.homePageNestedScroll.post{
-                        binding.homePageNestedScroll.fullScroll(View.FOCUS_DOWN)
-                    }
 
                     Log.d("HomePageFragment","RealtimeDatabase Veriler READ")
                 }

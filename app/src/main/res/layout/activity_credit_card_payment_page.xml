@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.paymentPages.CreditCardPaymentPageActivity"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/activity_credit_card_payment_isim"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:text="isim"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activity_credit_card_payment_eposta"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="eposta"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textStyle="italic"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/activity_credit_card_payment_aylikucret"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="aylık ucret"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textStyle="italic"
+        android:textSize="23sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/activity_credit_card_payment_odenecektutar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="odenen ucret"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textStyle="italic"
+        android:textSize="25sp"
+        android:textColor="#6C0505"/>
+    <com.stripe.android.view.CardMultilineWidget
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:id="@+id/stripeCardMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="öde"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:id="@+id/payButton"
+        android:layout_marginTop="20dp"
+        android:textSize="23sp"
+        android:layout_gravity="center"
+        android:textStyle="italic"
+        android:backgroundTint="@android:color/holo_green_light"/>
+
+</LinearLayout>

@@ -14,7 +14,7 @@
         android:textStyle="normal"
         android:gravity="center_vertical"/>
     <TextView
-        android:id="@+id/recycler_row_antrenor_programinYazildigiTarih"
+        android:id="@+id/recycler_row_programlarim_programinYazildigiTarih"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="asdsadds"

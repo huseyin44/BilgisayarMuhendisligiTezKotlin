@@ -61,6 +61,13 @@
             >
         </item>
         <item
+            android:id="@+id/menu_antrenorlere_odeme_yap"
+            android:icon="@drawable/ic_baseline_attach_money_24"
+            android:title="ANTRENÖR ÜCRETİ ÖDEME"
+            app:showAsAction="never"
+            >
+        </item>
+        <item
             android:id="@+id/menu_adimSayar"
             android:icon="@drawable/ic_baseline_directions_run_24"
             android:title="ADIM SAYAR"

@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_homePageFragment_to_photosShareFragment"
             app:destination="@id/photosShareFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_sporcuUserProfileFragment"
+            app:destination="@id/sporcuUserProfileFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_userAntrenorProfileFragment"
+            app:destination="@id/userAntrenorProfileFragment" />
     </fragment>
     <fragment
         android:label="BODY MASS INDEX HESAPLAMA"
@@ -91,6 +97,12 @@
         <action
             android:id="@+id/action_personalChatFragment_to_personalListChatFragment"
             app:destination="@id/personalListChatFragment" />
+        <action
+            android:id="@+id/action_personalChatFragment_to_antrenorProfileFragment"
+            app:destination="@id/antrenorProfileFragment" />
+        <action
+            android:id="@+id/action_personalChatFragment_to_sporcuUserProfileFragment"
+            app:destination="@id/sporcuUserProfileFragment" />
     </fragment>
     <fragment
         android:label="SOHBET GEÇMİŞİ"
@@ -213,7 +225,11 @@
         android:id="@+id/sporcuUserProfileFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.SporcuUserProfileFragment"
         android:label="PROFİLİM"
-        tools:layout="@layout/fragment_sporcu_user_profile" />
+        tools:layout="@layout/fragment_sporcu_user_profile" >
+        <action
+            android:id="@+id/action_sporcuUserProfileFragment_to_antremanProgramiDetailsFragment"
+            app:destination="@id/antremanProgramiDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userAntrenorProfileFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.UserAntrenorProfileFragment"
@@ -222,10 +238,46 @@
         <action
             android:id="@+id/action_userAntrenorProfileFragment_to_antrenorWriteProgramActivity"
             app:destination="@id/antrenorWriteProgramActivity" />
+        <action
+            android:id="@+id/action_userAntrenorProfileFragment_to_antremanProgramiDetailsFragment"
+            app:destination="@id/antremanProgramiDetailsFragment" />
     </fragment>
     <activity
         android:id="@+id/antrenorWriteProgramActivity"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntrenorWriteProgramActivity"
         android:label="Sporcu İçin Program Yaz"
         tools:layout="@layout/activity_antrenor_write_program" />
+    <fragment
+        android:id="@+id/antremanProgramiDetailsFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntremanProgramiDetailsFragment"
+        android:label="fragment_antreman_programi_details"
+        tools:layout="@layout/fragment_antreman_programi_details" >
+        <argument
+            android:name="antreman_programi_id"
+            app:argType="string" />
+    </fragment>
+    <activity
+        android:id="@+id/creditCardPaymentPageActivity"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.paymentPages.CreditCardPaymentPageActivity"
+        android:label="Ödeme Detayları"
+        tools:layout="@layout/activity_credit_card_payment_page" >
+        <argument
+            android:name="antrenor_email"
+            app:argType="string" />
+        <argument
+            android:name="antrenor_username"
+            app:argType="string" />
+        <argument
+            android:name="antrenor_ucret"
+            app:argType="string" />
+    </activity>
+    <fragment
+        android:id="@+id/antrenorPaymentFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.paymentPages.AntrenorPaymentFragment"
+        android:label="Antrenör Sorgula"
+        tools:layout="@layout/fragment_antrenor_payment" >
+        <action
+            android:id="@+id/action_antrenorPaymentFragment_to_creditCardPaymentPageActivity"
+            app:destination="@id/creditCardPaymentPageActivity" />
+    </fragment>
 </navigation>

@@ -37,6 +37,16 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/black"/>
                 <TextView
+                    android:id="@+id/antrenorProfile_programlarim_text_bossa"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:text="sadasd"
+                    android:textColor="@color/black"
+                    android:textStyle="italic"
+                    android:textSize="15sp"
+                    android:visibility="gone"/>
+                <TextView
                     android:id="@+id/antrenorProfile_isim"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -104,9 +114,22 @@
             android:textColor="@color/black"
             android:textStyle="italic"/>
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/antrenorList_odemeSayfasinaGit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="ÜCRET ÖDEME SAYFASINA GİT"
+            android:gravity="center_vertical"
+            android:textSize="25sp"
+            android:textColor="#0376AE"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"

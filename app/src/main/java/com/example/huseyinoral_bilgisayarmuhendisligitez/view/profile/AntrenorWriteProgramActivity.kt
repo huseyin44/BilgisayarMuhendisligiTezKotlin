@@ -23,19 +23,28 @@ import com.google.firebase.storage.FirebaseStorage
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import android.R
+import android.app.Activity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.HomePageFragmentDirections
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.notePage.NoteTitlePageFragmentDirections
+import com.google.android.material.navigation.NavigationView
+
 
 class AntrenorWriteProgramActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAntrenorWriteProgramBinding
     private val db= Firebase.firestore
+    private lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding = ActivityAntrenorWriteProgramBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.writeAntrenorProgramEkleButton.setOnClickListener {
-            Log.d("AntrenorWriteProgramActivity","Program Ekle butonuna tıklandı")
+            Log.d("AntrenorWriteProgramActivityLog","Program Ekle butonuna tıklandı")
             writeProgramForSporcu()
         }
     }
@@ -46,10 +55,11 @@ class AntrenorWriteProgramActivity : AppCompatActivity() {
     }
 
     private fun antrenorWriteProgramToChatPage(){
-        Log.d("AntrenorWriteProgramActivity","Profile Dönüldü")
+        val intent = Intent(this@AntrenorWriteProgramActivity, MainActivity::class.java)
+        intent.putExtra("AntrenorWriteToAntrenorProfile","AntrenorWriteToAntrenorProfileSucces")
         finish()
-        val intent = Intent(this, UserAntrenorProfileFragment::class.java)
         startActivity(intent)
+        Log.d("AntrenorWriteProgramActivityLog","Profile Dönüldü")
     }
 
     private fun isInputCorrect(): Boolean {

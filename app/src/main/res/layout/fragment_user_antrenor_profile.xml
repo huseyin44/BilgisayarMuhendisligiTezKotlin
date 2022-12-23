@@ -170,6 +170,7 @@
             android:textSize="21sp"
             android:textColor="#AC0906"
             android:textStyle="bold"/>
+
         <TextView
             android:id="@+id/antrenorUserProfile_programlarim_text_bossa"
             android:layout_width="match_parent"

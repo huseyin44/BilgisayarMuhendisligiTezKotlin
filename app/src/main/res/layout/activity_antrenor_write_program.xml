@@ -18,7 +18,7 @@
         android:background="@drawable/text_corners"
         android:ems="10"
         android:hint=" Sporcunun Mailini Yazınız."
-        android:inputType="number"
+        android:inputType="textMultiLine"
         android:textSize="20sp"
         android:textStyle="italic" />
 

@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntremanProgramlariListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPhotoShareReadRecyclerAdapter
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.PhotosShareRecyclerAdapter
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.ProgramForSporcuRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentUserAntrenorProfileBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
@@ -20,6 +20,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -34,7 +35,7 @@ class UserAntrenorProfileFragment : Fragment() {
     private lateinit var photoAdapter: AntrenorPhotoShareReadRecyclerAdapter
     var photoList = ArrayList<PhotoSharedByAntrenorData>()
 
-    private lateinit var programlarimAdapter: ProgramForSporcuRecyclerAdapter
+    private lateinit var programlarimAdapter: AntremanProgramlariListRecyclerAdapter
     var programList = ArrayList<WriteProgramData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +48,9 @@ class UserAntrenorProfileFragment : Fragment() {
         antrenorProfileDataShow()
         readSharedPhotoData()
         readProgramlarimData()
+        binding.antrenorUserProfileOgrencilereProgramYaz.setOnClickListener {
+            userAntrenorToWriteProgramActivity()
+        }
     }
 
     override fun onCreateView(
@@ -55,6 +59,11 @@ class UserAntrenorProfileFragment : Fragment() {
     ): View {
         _binding = FragmentUserAntrenorProfileBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    private fun userAntrenorToWriteProgramActivity(){
+        val action= UserAntrenorProfileFragmentDirections.actionUserAntrenorProfileFragmentToAntrenorWriteProgramActivity()
+        findNavController().navigate(action)
     }
 
     private fun antrenorProfileDataShow() {
@@ -166,32 +175,57 @@ class UserAntrenorProfileFragment : Fragment() {
     }
 
     private fun readProgramlarimData(){
-        val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val ref = FirebaseDatabase.getInstance().getReference("/ProgramWrittenByAntrenor")
-        programList.clear()
-        ref.addChildEventListener(object: ChildEventListener {
-            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                val programData = p0.getValue(WriteProgramData::class.java)
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+        db.collection("UserDetailPost").document(userID).get()
+            .addOnSuccessListener { result ->
+                val kullanci_mail = result.data?.get("email").toString()
+                programList.clear()
+                ref.addChildEventListener(object: ChildEventListener {
+                    override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                        val programData = p0.getValue(WriteProgramData::class.java)
 
-                if (programData != null) {
-                    if(userID==programData.sporcu_mail){
-                        val isim=programData.antrenor_username
-                        val program_id=programData.program_id
-                        val program_text=programData.program_text
-                        val programin_yazildigi_tarih=programData.programin_yazildigi_tarih
-                        val antrenor_id=programData.antrenor_id
-                        val sporcu_mail=programData.sporcu_mail
-                        val veriler= WriteProgramData(program_id,isim,antrenor_id,program_text,sporcu_mail,programin_yazildigi_tarih)
+                        if (programData != null) {
+                            if(kullanci_mail==programData.sporcu_mail){
+                                val isim=programData.antrenor_username
+                                val program_id=programData.program_id
+                                val program_text=programData.program_text
+                                val programin_yazildigi_tarih=programData.programin_yazildigi_tarih
+                                val antrenor_id=programData.antrenor_id
+                                val sporcu_mail=programData.sporcu_mail
+                                val veriler= WriteProgramData(program_id,isim,antrenor_id,program_text,sporcu_mail,programin_yazildigi_tarih)
 
-                        programList.add(veriler)
-                        Log.d("UserAntrenorProfileFragment","RealtimeDatabase READP ROGRAMLARİM Veriler READ")
+                                programList.add(veriler)
+                                Log.d("UserAntrenorProfileFragment","RealtimeDatabase READP ROGRAMLARİM Veriler READ")
+                            }
+                        }
+                        //recyclerview
+                        val layoutManager= LinearLayoutManager(context)
+                        binding.antrenorUserProfileRecyclerProgramlarim.layoutManager=layoutManager
+                        programlarimAdapter= AntremanProgramlariListRecyclerAdapter(programList)
+                        binding.antrenorUserProfileRecyclerProgramlarim.adapter=programlarimAdapter
+                        //programlarim da program yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+                        if(programList.size<1){
+                            binding.antrenorUserProfileProgramlarimTextBossa.text="Antreman Programı Bulunamadı"
+                            binding.antrenorUserProfileProgramlarimTextBossa.visibility=View.VISIBLE
+                        }
+                        else{
+                            binding.antrenorUserProfileProgramlarimTextBossa.visibility=View.GONE
+                        }
                     }
-                }
-                //recyclerview
-                val layoutManager= LinearLayoutManager(context)
-                binding.antrenorUserProfileRecyclerProgramlarim.layoutManager=layoutManager
-                programlarimAdapter= ProgramForSporcuRecyclerAdapter(programList)
-                binding.antrenorUserProfileRecyclerProgramlarim.adapter=programlarimAdapter
+
+                    override fun onCancelled(p0: DatabaseError) {
+
+                    }
+                    override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+
+                    }
+                    override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+                    }
+                    override fun onChildRemoved(p0: DataSnapshot) {
+                        programList.clear()
+                    }
+                })
                 //programlarim da program yoksa gizli text viewdeki bilgilendirme mesajı yazsın
                 if(programList.size<1){
                     binding.antrenorUserProfileProgramlarimTextBossa.text="Antreman Programı Bulunamadı"
@@ -202,25 +236,6 @@ class UserAntrenorProfileFragment : Fragment() {
                 }
             }
 
-            override fun onCancelled(p0: DatabaseError) {
 
-            }
-            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-
-            }
-            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-            }
-            override fun onChildRemoved(p0: DataSnapshot) {
-                programList.clear()
-            }
-        })
-        //programlarim da program yoksa gizli text viewdeki bilgilendirme mesajı yazsın
-        if(programList.size<1){
-            binding.antrenorUserProfileProgramlarimTextBossa.text="Antreman Programı Bulunamadı"
-            binding.antrenorUserProfileProgramlarimTextBossa.visibility=View.VISIBLE
-        }
-        else{
-            binding.antrenorUserProfileProgramlarimTextBossa.visibility=View.GONE
-        }
     }
 }

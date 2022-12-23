@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.profile.AntremanProgramiDetailsFragment"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/antreman_detay_antrenor_ismi"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="antrenor"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/antreman_detay_programin_yazildigi_tarih"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="programin yazıldıgı tarih"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:gravity="center_vertical"
+        android:textColor="#046797"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Programın Detayları"
+        android:textSize="19sp"
+        android:textStyle="normal"
+        android:gravity="center_vertical"
+        android:textColor="#650909"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/antreman_detay_programin_detaylari"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:text="programin detaylari"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

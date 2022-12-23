@@ -34,6 +34,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_kayitol).isVisible=true
             navView.menu.findItem(R.id.menu_girisyap).isVisible=true
             navView.menu.findItem(R.id.menu_antrenorler).isVisible=false
+            navView.menu.findItem(R.id.menu_antrenorlere_odeme_yap).isVisible=false
             navView.menu.findItem(R.id.menu_egzersiz).isVisible=false
             navView.menu.findItem(R.id.menu_ipucları).isVisible=false
             navView.menu.findItem(R.id.menu_profilduzenle).isVisible=false
@@ -51,6 +52,7 @@ class NavigationItemClass {
             navView.menu.findItem(R.id.menu_kayitol).isVisible=false
             navView.menu.findItem(R.id.menu_girisyap).isVisible=false
             navView.menu.findItem(R.id.menu_antrenorler).isVisible=true
+            navView.menu.findItem(R.id.menu_antrenorlere_odeme_yap).isVisible=true
             navView.menu.findItem(R.id.menu_egzersiz).isVisible=true
             navView.menu.findItem(R.id.menu_ipucları).isVisible=true
             navView.menu.findItem(R.id.menu_profilduzenle).isVisible=true
@@ -97,6 +99,11 @@ class NavigationItemClass {
                 R.id.menu_antrenorler -> {
                     binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
                     navController.navigate(R.id.antrenorListFragment2)
+                    true
+                }
+                R.id.menu_antrenorlere_odeme_yap -> {
+                    binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
+                    navController.navigate(R.id.antrenorPaymentFragment)
                     true
                 }
                 R.id.menu_egzersiz -> {
@@ -169,6 +176,9 @@ class NavigationItemClass {
     fun navigationDrawerDestinationChanged(navView:NavigationView,navController:NavController){
         navController.addOnDestinationChangedListener{ _, destination, _ ->
             if(destination.id == R.id.antrenorListFragment2) {
+                navigationitemvisibility(navView)
+            }
+            if(destination.id == R.id.antrenorPaymentFragment) {
                 navigationitemvisibility(navView)
             }
             if(destination.id == R.id.registerPageActivity2) {

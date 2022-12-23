@@ -50,7 +50,6 @@ class AntrenorProfileDetailFragment : Fragment() {
         return binding.root
     }
 
-
     private fun antrenorProfileDataShow() {
         val antrenorId = args.antrenorId
 

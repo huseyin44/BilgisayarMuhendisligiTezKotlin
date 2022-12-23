@@ -26,7 +26,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".AntrenorWriteProgramActivity"
+            android:name=".LauncherActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.paymentPages.CreditCardPaymentPageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.profile.AntrenorWriteProgramActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -37,10 +51,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDG8XKf1JCbpVwfNMIh1KkjUiVf69_Eank" />
 
-        <activity
-            android:name=".view.MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
         <activity
             android:name=".view.LoginPageActivity"
             android:exported="false">
