@@ -54,6 +54,9 @@ class UserAntrenorProfileFragment : Fragment() {
         binding.antrenorUserProfileOgrencilereProgramYaz.setOnClickListener {
             userAntrenorToWriteProgramActivity()
         }
+        binding.antrenorUserProfileBilgilerimiGuncelle.setOnClickListener {
+            userAntrenorToUpdateProfile()
+        }
     }
 
     override fun onCreateView(
@@ -66,6 +69,10 @@ class UserAntrenorProfileFragment : Fragment() {
 
     private fun userAntrenorToWriteProgramActivity(){
         val action= UserAntrenorProfileFragmentDirections.actionUserAntrenorProfileFragmentToAntrenorWriteProgramActivity()
+        findNavController().navigate(action)
+    }
+    private fun userAntrenorToUpdateProfile(){
+        val action= UserAntrenorProfileFragmentDirections.actionUserAntrenorProfileFragmentToUpdateUserAntrenorProfileFragment()
         findNavController().navigate(action)
     }
 

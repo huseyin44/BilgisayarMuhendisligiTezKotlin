@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/loginfragment_constraintlayout"
+    tools:context=".view.profile.sporcu.UpdateSporcuProfileDetailsFragment">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif-medium"
+        android:text=" KAYIT OL"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/register_name_text"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:hint="  İsim"
+        android:inputType="textPersonName"
+        android:textSize="23sp"
+        android:textStyle="italic"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/register_surname_text"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:hint="  Soyisim"
+        android:inputType="textPersonName"
+        android:textSize="23sp"
+        android:textStyle="italic"
+        android:visibility="gone"/>
+
+    <RadioGroup
+        android:id="@+id/register_radiogroup_cinsiyet"
+        android:layout_width="280dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radiobutton_kadin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Kadın"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_erkek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Erkek"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/radiobutton_cinsiyet_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/register_boy"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:hint=" Boyunuz cm"
+        android:inputType="number"
+        android:textSize="23sp"
+        android:textStyle="italic"
+        android:visibility="gone"/>
+
+    <EditText
+        android:layout_gravity="center"
+        android:id="@+id/register_kilo"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:background="@drawable/text_corners"
+        android:ems="10"
+        android:hint="  Kilonuz"
+        android:inputType="number"
+        android:textSize="23sp"
+        android:textStyle="italic"
+        android:visibility="gone"/>
+
+    <RadioGroup
+        android:id="@+id/register_radiogroup"
+        android:layout_width="280dp"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/radiobutton_sporcu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Sporcu"
+            android:textSize="25sp" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_antrenor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Antrenör"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/radiobutton_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/registerPage_imageView"
+        android:layout_width="200dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/profilresmisecin"
+        android:visibility="gone"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_guncelle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/text_corners"
+        android:text="Güncelle"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:textColor="#127FB5"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_iptal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/text_corners"
+        android:text="İPTAL"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:textColor="#BC0101"/>
+
+</LinearLayout>

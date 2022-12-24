@@ -210,6 +210,15 @@
         <action
             android:id="@+id/action_sporcuUserProfileFragment_to_antremanProgramiDetailsFragment"
             app:destination="@id/antremanProgramiDetailsFragment" />
+        <action
+            android:id="@+id/action_sporcuUserProfileFragment_to_updateSporcuProfileFragment"
+            app:destination="@id/updateSporcuProfileFragment" />
+        <action
+            android:id="@+id/action_sporcuUserProfileFragment_to_updateSporcuProfileFragment2"
+            app:destination="@id/updateSporcuProfileFragment" />
+        <action
+            android:id="@+id/action_sporcuUserProfileFragment_to_antrenorlerimDetailsListFragment"
+            app:destination="@id/antrenorlerimDetailsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/userAntrenorProfileFragment"
@@ -225,6 +234,9 @@
         <action
             android:id="@+id/action_userAntrenorProfileFragment_to_ogrencilerimDetailsListFragment"
             app:destination="@id/ogrencilerimDetailsListFragment" />
+        <action
+            android:id="@+id/action_userAntrenorProfileFragment_to_updateUserAntrenorProfileFragment"
+            app:destination="@id/updateUserAntrenorProfileFragment" />
     </fragment>
     <activity
         android:id="@+id/antrenorWriteProgramActivity"
@@ -277,6 +289,63 @@
             app:argType="string" />
         <argument
             android:name="ogrenci_yatirdigi_tarih"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateUserAntrenorProfileFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor.UpdateUserAntrenorProfileFragment"
+        android:label="Profil Bilgilerini Güncelle"
+        tools:layout="@layout/fragment_update_user_antrenor_profile" >
+        <action
+            android:id="@+id/action_updateUserAntrenorProfileFragment_to_updateUserAntrenorUpdateDetailsFragment"
+            app:destination="@id/updateUserAntrenorUpdateDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateUserAntrenorUpdateDetailsFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor.UpdateUserAntrenorUpdateDetailsFragment"
+        android:label="Profil Bilgilerini Güncelle"
+        tools:layout="@layout/fragment_update_user_antrenor_update_details" >
+        <argument
+            android:name="changeProfilItem"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_updateUserAntrenorUpdateDetailsFragment_to_updateUserAntrenorProfileFragment"
+            app:destination="@id/updateUserAntrenorProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateSporcuProfileFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.sporcu.UpdateSporcuProfileFragment"
+        android:label="Profil Bilgilerini Güncelle"
+        tools:layout="@layout/fragment_update_sporcu_profile" >
+        <action
+            android:id="@+id/action_updateSporcuProfileFragment_to_updateSporcuProfileDetailsFragment"
+            app:destination="@id/updateSporcuProfileDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateSporcuProfileDetailsFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.sporcu.UpdateSporcuProfileDetailsFragment"
+        android:label="Profil Bilgilerini Güncelle"
+        tools:layout="@layout/fragment_update_sporcu_profile_details" >
+        <action
+            android:id="@+id/action_updateSporcuProfileDetailsFragment_to_updateSporcuProfileFragment"
+            app:destination="@id/updateSporcuProfileFragment" />
+        <argument
+            android:name="changeProfilItem"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/antrenorlerimDetailsListFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.ogrenciAntrenorListPage.AntrenorlerimDetailsListFragment"
+        android:label="Antrenörlerim"
+        tools:layout="@layout/fragment_antrenorlerim_details_list" >
+        <argument
+            android:name="antrenor_username"
+            app:argType="string" />
+        <argument
+            android:name="ogrencinin_yatirdigi_para"
+            app:argType="string" />
+        <argument
+            android:name="ogrencinin_para_yatirdigi_tarih"
             app:argType="string" />
     </fragment>
 </navigation>

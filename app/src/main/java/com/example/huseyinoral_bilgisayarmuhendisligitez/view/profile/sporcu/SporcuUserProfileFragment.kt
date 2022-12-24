@@ -6,10 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntremanProgramlariListRecyclerAdapter
+import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorlerimListRecyclerAdapter
+import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.OgrencilerListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentSporcuUserProfileBinding
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.SuccessfulPaymentData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -31,12 +35,12 @@ class SporcuUserProfileFragment : Fragment() {
 
     private lateinit var programlarimAdapter: AntremanProgramlariListRecyclerAdapter
     var programList = ArrayList<WriteProgramData>()
+    private lateinit var antrenorlerimAdapter: AntrenorlerimListRecyclerAdapter
+    var antrenorlerimList = ArrayList<SuccessfulPaymentData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        antrenorProfileDataShow()
-        readProgramlarimData()
     }
 
     override fun onCreateView(
@@ -45,6 +49,21 @@ class SporcuUserProfileFragment : Fragment() {
     ): View {
         _binding = FragmentSporcuUserProfileBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        antrenorProfileDataShow()
+        readProgramlarimData()
+        readAntrenorlerimData()
+        binding.sporcuUserProfileBilgilerimiGuncelle.setOnClickListener {
+            sporcuProfileToUpdateProfile()
+        }
+    }
+
+    private fun sporcuProfileToUpdateProfile(){
+        val action= SporcuUserProfileFragmentDirections.actionSporcuUserProfileFragmentToUpdateSporcuProfileFragment()
+        findNavController().navigate(action)
     }
 
     private fun antrenorProfileDataShow() {
@@ -93,7 +112,7 @@ class SporcuUserProfileFragment : Fragment() {
                                 val veriler= WriteProgramData(program_id,isim,antrenor_id,program_text,sporcu_mail,programin_yazildigi_tarih)
 
                                 programList.add(veriler)
-                                Log.d("UserAntrenorProfileFragment","RealtimeDatabase READP ROGRAMLARİM Veriler READ")
+                                Log.d("SporcuUserProfileFragment","RealtimeDatabase READP ROGRAMLARİM Veriler READ")
                             }
                         }
                         //recyclerview
@@ -132,8 +151,67 @@ class SporcuUserProfileFragment : Fragment() {
                     binding.sporcuUserProfileProgramlarimTextBossa.visibility=View.GONE
                 }
             }
+    }
 
+    private fun readAntrenorlerimData(){
+        val ref = FirebaseDatabase.getInstance().getReference("/SuccessfulPayment")
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
+        antrenorlerimList.clear()
+        ref.addChildEventListener(object: ChildEventListener {
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                val antrenorlerimData = p0.getValue(SuccessfulPaymentData::class.java)
+
+                if (antrenorlerimData != null) {
+                    if(userID==antrenorlerimData.odeyen_kullanıcı_id){
+                        val payment_id=antrenorlerimData.payment_id
+                        val antrenor_isim=antrenorlerimData.antrenor_username
+                        val antrenor_email=antrenorlerimData.antrenor_email
+                        val antrenor_ucret=antrenorlerimData.antrenor_ucret
+                        val odeme_tarihi=antrenorlerimData.programin_yazildigi_tarih
+                        val odeyen_kullanıcı_id= antrenorlerimData.odeyen_kullanıcı_id
+                        val odeyen_kullanıcı_username=antrenorlerimData.odeyen_kullanıcı_username
+                        val veriler= SuccessfulPaymentData(payment_id,antrenor_isim,antrenor_email,antrenor_ucret,odeyen_kullanıcı_id,odeyen_kullanıcı_username,odeme_tarihi)
+
+                        antrenorlerimList.add(veriler)
+                        Log.d("SporcuUserProfileFragment","RealtimeDatabase READP OGRENCİLERİM Veriler READ")
+                    }
+                }
+                //recyclerview
+                val layoutManager= LinearLayoutManager(context)
+                binding.sporcuUserProfileRecyclerAntrenorlerim.layoutManager=layoutManager
+                antrenorlerimAdapter= AntrenorlerimListRecyclerAdapter(antrenorlerimList)
+                binding.sporcuUserProfileRecyclerAntrenorlerim.adapter=antrenorlerimAdapter
+                //Antrenörde de Antrenör yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+                if(antrenorlerimList.size<1){
+                    binding.sporcuUserProfileAntrenorlerimTextBossa.text="Antrenör Bulunamadı"
+                    binding.sporcuUserProfileAntrenorlerimTextBossa.visibility=View.VISIBLE
+                }
+                else{
+                    binding.sporcuUserProfileAntrenorlerimTextBossa.visibility=View.GONE
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+
+            }
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+            }
+            override fun onChildRemoved(p0: DataSnapshot) {
+                antrenorlerimList.clear()
+            }
+        })
+        //Antrenörde de Antrenör yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+        if(antrenorlerimList.size<1){
+            binding.sporcuUserProfileAntrenorlerimTextBossa.text="Antrenör Bulunamadı"
+            binding.sporcuUserProfileAntrenorlerimTextBossa.visibility=View.VISIBLE
+        }
+        else{
+            binding.sporcuUserProfileAntrenorlerimTextBossa.visibility=View.GONE
+        }
     }
 
 }

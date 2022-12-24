@@ -4,13 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.SuccessfulPaymentData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor.UserAntrenorProfileFragmentDirections
 
-class OgrencilerListAntrenorListRecyclerAdapter (val ogrencilerList:ArrayList<SuccessfulPaymentData>): RecyclerView.Adapter<OgrencilerListAntrenorListRecyclerAdapter.OgrencilerListViewHolder>(){
+class OgrencilerimListRecyclerAdapter (val ogrencilerList:ArrayList<SuccessfulPaymentData>): RecyclerView.Adapter<OgrencilerimListRecyclerAdapter.OgrencilerListViewHolder>(){
     class OgrencilerListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     }

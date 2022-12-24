@@ -6,15 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPhotoShareReadRecyclerAdapter
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.OgrencilerListAntrenorListRecyclerAdapter
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.OgrencilerListRecyclerAdapter
+import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.OgrencilerimListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentAntrenorProfileBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.SuccessfulPaymentData
@@ -37,7 +34,7 @@ class AntrenorProfileDetailFragment : Fragment() {
     val db= Firebase.firestore
     private lateinit var photoAdapter: AntrenorPhotoShareReadRecyclerAdapter
     var photoList = ArrayList<PhotoSharedByAntrenorData>()
-    private lateinit var ogrencilerimAdapter: OgrencilerListAntrenorListRecyclerAdapter
+    private lateinit var ogrencilerimAdapter: OgrencilerimListRecyclerAdapter
     var ogrencilerimList = ArrayList<SuccessfulPaymentData>()
 
     private val args : AntrenorProfileDetailFragmentArgs by navArgs()
@@ -190,7 +187,7 @@ class AntrenorProfileDetailFragment : Fragment() {
                         //recyclerview
                         val layoutManager= LinearLayoutManager(context)
                         binding.antrenorProfileRecyclerAntrenorOgrencileri.layoutManager=layoutManager
-                        ogrencilerimAdapter= OgrencilerListAntrenorListRecyclerAdapter(ogrencilerimList)
+                        ogrencilerimAdapter= OgrencilerimListRecyclerAdapter(ogrencilerimList)
                         binding.antrenorProfileRecyclerAntrenorOgrencileri.adapter=ogrencilerimAdapter
                         //öğrencilerimde de öğrenci yoksa gizli text viewdeki bilgilendirme mesajı yazsın
                         if(ogrencilerimList.size<1){
