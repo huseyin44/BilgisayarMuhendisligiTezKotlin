@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.profile.SporcuUserProfileFragment"
+    tools:context=".view.profile.sporcu.SporcuUserProfileFragment"
     android:background="#BAC3C1C1">
 
     <LinearLayout

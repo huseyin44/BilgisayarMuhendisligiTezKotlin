@@ -7,15 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPhotoShareReadRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentAntremanProgramiDetailsBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentAntrenorProfileBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -59,8 +52,8 @@ class AntremanProgramiDetailsFragment : Fragment() {
                         val isim=programData.antrenor_username
                         val tarih=programData.programin_yazildigi_tarih
                         val antreman_programi=programData.program_text
-                        binding.antremanDetayAntrenorIsmi.text=isim.toString()
-                        binding.antremanDetayPrograminYazildigiTarih.text=tarih.toString()
+                        binding.antremanDetayAntrenorIsmi.text="Antrenör : "+isim.toString().toUpperCase(Locale.ROOT)
+                        binding.antremanDetayPrograminYazildigiTarih.text="Programın Yazıldığı Tarih : "+tarih.toString()
                         binding.antremanDetayPrograminDetaylari.text=antreman_programi.toString()
                         Log.d("AntremanProgramDetailsFragment","RealtimeDatabase Veriler READ")
                     }

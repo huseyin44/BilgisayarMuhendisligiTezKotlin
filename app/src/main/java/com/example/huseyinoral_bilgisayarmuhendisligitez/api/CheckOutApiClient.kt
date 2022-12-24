@@ -1,10 +1,8 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.classes
+package com.example.huseyinoral_bilgisayarmuhendisligitez.api
 
 import com.google.gson.Gson
-import com.google.type.Money
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
 

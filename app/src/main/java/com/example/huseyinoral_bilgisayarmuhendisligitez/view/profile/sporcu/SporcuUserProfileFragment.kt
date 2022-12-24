@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.sporcu
 
 import android.os.Bundle
 import android.util.Log
@@ -6,13 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntremanProgramlariListRecyclerAdapter
-import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPhotoShareReadRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentSporcuUserProfileBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener

@@ -1,35 +1,19 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityAntrenorWriteProgramBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityLoginPageBinding
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.view.MainActivity
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.RegisterPageActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
-import android.R
-import android.app.Activity
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.HomePageFragmentDirections
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.notePage.NoteTitlePageFragmentDirections
 import com.google.android.material.navigation.NavigationView
 
 

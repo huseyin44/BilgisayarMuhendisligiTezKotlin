@@ -51,7 +51,7 @@
     <fragment
         android:label="ANTRENÖRLER"
         android:id="@+id/antrenorListFragment2"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.ogrenciAntrenorListPage.AntrenorListFragment"
         tools:layout="@layout/fragment_antrenor_list" >
         <action
             android:id="@+id/action_antrenorListFragment2_to_personalChatFragment"
@@ -147,28 +147,6 @@
             android:id="@+id/action_noteTitlePageFragment_to_noteDetailsFragment2"
             app:destination="@id/noteDetailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/paymentPageFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.PaymentPageFragment"
-        android:label="Kredi Kartı Ödeme"
-        tools:layout="@layout/fragment_payment_page" >
-        <argument
-            android:name="toUserId"
-            app:argType="string" />
-        <argument
-            android:name="toUserUcret"
-            app:argType="string" />
-        <argument
-            android:name="toUserName"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_paymentPageFragment_to_personalChatFragment"
-            app:destination="@id/personalChatFragment"
-            app:popUpToInclusive="true" />
-        <argument
-            android:name="toUserProfileUrl"
-            app:argType="string" />
-    </fragment>
 
     <activity
         android:id="@+id/stepCounterActivity"
@@ -214,16 +192,19 @@
     </fragment>
     <fragment
         android:id="@+id/antrenorProfileFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntrenorProfileDetailFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.AntrenorProfileDetailFragment"
         android:label="Antrenör Profili"
         tools:layout="@layout/fragment_antrenor_profile" >
         <argument
             android:name="antrenor_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_antrenorProfileFragment_to_creditCardPaymentPageActivity"
+            app:destination="@id/creditCardPaymentPageActivity" />
     </fragment>
     <fragment
         android:id="@+id/sporcuUserProfileFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.SporcuUserProfileFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.sporcu.SporcuUserProfileFragment"
         android:label="PROFİLİM"
         tools:layout="@layout/fragment_sporcu_user_profile" >
         <action
@@ -232,7 +213,7 @@
     </fragment>
     <fragment
         android:id="@+id/userAntrenorProfileFragment"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.UserAntrenorProfileFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor.UserAntrenorProfileFragment"
         android:label="PROFİLİM"
         tools:layout="@layout/fragment_user_antrenor_profile" >
         <action
@@ -241,16 +222,19 @@
         <action
             android:id="@+id/action_userAntrenorProfileFragment_to_antremanProgramiDetailsFragment"
             app:destination="@id/antremanProgramiDetailsFragment" />
+        <action
+            android:id="@+id/action_userAntrenorProfileFragment_to_ogrencilerimDetailsListFragment"
+            app:destination="@id/ogrencilerimDetailsListFragment" />
     </fragment>
     <activity
         android:id="@+id/antrenorWriteProgramActivity"
-        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntrenorWriteProgramActivity"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor.AntrenorWriteProgramActivity"
         android:label="Sporcu İçin Program Yaz"
         tools:layout="@layout/activity_antrenor_write_program" />
     <fragment
         android:id="@+id/antremanProgramiDetailsFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntremanProgramiDetailsFragment"
-        android:label="fragment_antreman_programi_details"
+        android:label="Antreman Programı Detayları"
         tools:layout="@layout/fragment_antreman_programi_details" >
         <argument
             android:name="antreman_programi_id"
@@ -279,5 +263,20 @@
         <action
             android:id="@+id/action_antrenorPaymentFragment_to_creditCardPaymentPageActivity"
             app:destination="@id/creditCardPaymentPageActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/ogrencilerimDetailsListFragment"
+        android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.ogrenciAntrenorListPage.OgrencilerimDetailsListFragment"
+        android:label="Öğrencilerim Detay"
+        tools:layout="@layout/fragment_ogrencilerim_details_list" >
+        <argument
+            android:name="ogrenci_yatirdigi_para"
+            app:argType="string" />
+        <argument
+            android:name="ogrenci_isim"
+            app:argType="string" />
+        <argument
+            android:name="ogrenci_yatirdigi_tarih"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -26,13 +26,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".LauncherActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".view.paymentPages.CreditCardPaymentPageActivity"
             android:exported="false">
             <meta-data
@@ -40,7 +33,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.profile.AntrenorWriteProgramActivity"
+            android:name=".view.profile.antrenor.userWriteAntrenor.AntrenorWriteProgramActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

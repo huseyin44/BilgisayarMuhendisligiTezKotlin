@@ -1,6 +1,5 @@
 package com.example.huseyinoral_bilgisayarmuhendisligitez.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.chatPage.PersonalChatFragment
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.ogrenciAntrenorListPage.AntrenorListFragmentDirections
 
 class AntrenorListRecyclerAdapter(val antrenorList:ArrayList<AntrenorData>):RecyclerView.Adapter<AntrenorListRecyclerAdapter.AntrenorListViewHolder>() {
     class AntrenorListViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){

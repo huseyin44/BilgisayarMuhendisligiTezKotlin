@@ -1,4 +1,4 @@
-package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile
+package com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor
 
 import android.os.Bundle
 import android.util.Log
@@ -6,21 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntremanProgramlariListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPhotoShareReadRecyclerAdapter
+import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.OgrencilerListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentUserAntrenorProfileBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
+import com.example.huseyinoral_bilgisayarmuhendisligitez.model.SuccessfulPaymentData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -32,11 +32,13 @@ class UserAntrenorProfileFragment : Fragment() {
 
     private lateinit var auth : FirebaseAuth
     val db= Firebase.firestore
+
     private lateinit var photoAdapter: AntrenorPhotoShareReadRecyclerAdapter
     var photoList = ArrayList<PhotoSharedByAntrenorData>()
-
     private lateinit var programlarimAdapter: AntremanProgramlariListRecyclerAdapter
     var programList = ArrayList<WriteProgramData>()
+    private lateinit var ogrencilerimAdapter: OgrencilerListRecyclerAdapter
+    var ogrencilerimList = ArrayList<SuccessfulPaymentData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,7 @@ class UserAntrenorProfileFragment : Fragment() {
         antrenorProfileDataShow()
         readSharedPhotoData()
         readProgramlarimData()
+        readOgrencilerimData()
         binding.antrenorUserProfileOgrencilereProgramYaz.setOnClickListener {
             userAntrenorToWriteProgramActivity()
         }
@@ -235,7 +238,68 @@ class UserAntrenorProfileFragment : Fragment() {
                     binding.antrenorUserProfileProgramlarimTextBossa.visibility=View.GONE
                 }
             }
+    }
 
+    private fun readOgrencilerimData(){
+        val ref = FirebaseDatabase.getInstance().getReference("/SuccessfulPayment")
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+        db.collection("UserDetailPost").document(userID).get()
+            .addOnSuccessListener { result ->
+                val antrenor_email = result.data?.get("email").toString()
+                ogrencilerimList.clear()
+                ref.addChildEventListener(object: ChildEventListener {
+                    override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                        val ogrencilerimData = p0.getValue(SuccessfulPaymentData::class.java)
 
+                        if (ogrencilerimData != null) {
+                            if(antrenor_email==ogrencilerimData.antrenor_email){
+                                val payment_id=ogrencilerimData.payment_id
+                                val antrenor_isim=ogrencilerimData.antrenor_username
+                                val antrenor_ucret=ogrencilerimData.antrenor_ucret
+                                val odeme_tarihi=ogrencilerimData.programin_yazildigi_tarih
+                                val odeyen_kullanıcı_id= ogrencilerimData.odeyen_kullanıcı_id
+                                val odeyen_kullanıcı_username=ogrencilerimData.odeyen_kullanıcı_username
+                                val veriler= SuccessfulPaymentData(payment_id,antrenor_isim,antrenor_email,antrenor_ucret,odeyen_kullanıcı_id,odeyen_kullanıcı_username,odeme_tarihi)
+
+                                ogrencilerimList.add(veriler)
+                                Log.d("UserAntrenorProfileFragment","RealtimeDatabase READP OGRENCİLERİM Veriler READ")
+                            }
+                        }
+                        //recyclerview
+                        val layoutManager= LinearLayoutManager(context)
+                        binding.antrenorUserProfileRecyclerOgrencilerim.layoutManager=layoutManager
+                        ogrencilerimAdapter= OgrencilerListRecyclerAdapter(ogrencilerimList)
+                        binding.antrenorUserProfileRecyclerOgrencilerim.adapter=ogrencilerimAdapter
+                        //öğrencilerimde de öğrenci yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+                        if(ogrencilerimList.size<1){
+                            binding.antrenorUserProfileOgrencilerimTextBossa.text="Öğrenci Bulunamadı"
+                            binding.antrenorUserProfileOgrencilerimTextBossa.visibility=View.VISIBLE
+                        }
+                        else{
+                            binding.antrenorUserProfileOgrencilerimTextBossa.visibility=View.GONE
+                        }
+                    }
+
+                    override fun onCancelled(p0: DatabaseError) {
+
+                    }
+                    override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+
+                    }
+                    override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+                    }
+                    override fun onChildRemoved(p0: DataSnapshot) {
+                        ogrencilerimList.clear()
+                    }
+                })
+                //öğrencilerimde de öğrenci yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+                if(ogrencilerimList.size<1){
+                    binding.antrenorUserProfileOgrencilerimTextBossa.text="Öğrenci Bulunamadı"
+                    binding.antrenorUserProfileOgrencilerimTextBossa.visibility=View.VISIBLE
+                }
+                else{
+                    binding.antrenorUserProfileOgrencilerimTextBossa.visibility=View.GONE
+                }
+            }
     }
 }

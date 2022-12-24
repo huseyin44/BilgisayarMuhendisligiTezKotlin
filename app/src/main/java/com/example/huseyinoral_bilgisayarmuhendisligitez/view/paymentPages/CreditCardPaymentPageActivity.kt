@@ -11,12 +11,9 @@ import com.example.huseyinoral_bilgisayarmuhendisligitez.view.MainActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.navArgs
-import com.example.huseyinoral_bilgisayarmuhendisligitez.classes.CheckOutApiClient
+import com.example.huseyinoral_bilgisayarmuhendisligitez.api.CheckOutApiClient
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.SuccessfulPaymentData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.AntrenorProfileDetailFragmentArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.stripe.android.PaymentConfiguration
@@ -24,7 +21,6 @@ import com.stripe.android.model.ConfirmPaymentIntentParams
 import com.stripe.android.payments.paymentlauncher.PaymentLauncher
 import com.stripe.android.payments.paymentlauncher.PaymentResult
 import kotlinx.coroutines.launch
-import okhttp3.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

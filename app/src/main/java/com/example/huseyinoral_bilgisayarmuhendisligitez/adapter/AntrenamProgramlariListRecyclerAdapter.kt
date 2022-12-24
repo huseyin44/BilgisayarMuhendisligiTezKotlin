@@ -4,18 +4,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.model.AntrenorData
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.WriteProgramData
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.AntrenorListFragmentDirections
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.SporcuUserProfileFragmentDirections
-import com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.UserAntrenorProfileFragmentDirections
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.antrenor.userWriteAntrenor.UserAntrenorProfileFragmentDirections
+import com.example.huseyinoral_bilgisayarmuhendisligitez.view.profile.sporcu.SporcuUserProfileFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

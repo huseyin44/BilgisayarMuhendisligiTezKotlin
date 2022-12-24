@@ -152,7 +152,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/paymentPage_antrenor_ucret_ode_button"
             android:layout_width="250dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:layout_height="50dp"
             android:background="@drawable/text_corners"
