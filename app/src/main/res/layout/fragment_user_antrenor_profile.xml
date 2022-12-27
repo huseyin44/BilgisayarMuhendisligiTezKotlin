@@ -197,6 +197,42 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Antrenörlerim"
+            android:gravity="center_vertical"
+            android:textSize="21sp"
+            android:textColor="#AC0906"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/antrenorUserProfile_antrenorlerim_text_bossa"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:text="sadasd"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:visibility="gone"/>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/antrenorUserProfile_scrollView_antrenorlerim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/antrenorUserProfile_recycler_antrenorlerim"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"

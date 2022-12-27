@@ -11,28 +11,11 @@ import android.hardware.SensorManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.speech.RecognizerIntent
 import android.util.Log
-import android.view.Menu
-import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.huseyinoral_bilgisayarmuhendisligitez.R
-import com.example.huseyinoral_bilgisayarmuhendisligitez.classes.NavigationItemClass
-import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityMainBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.ActivityStepCounterBinding
-import com.google.android.material.navigation.NavigationView
-import java.util.ArrayList
 
 class StepCounterActivity : AppCompatActivity() , SensorEventListener {
     private lateinit var binding: ActivityStepCounterBinding

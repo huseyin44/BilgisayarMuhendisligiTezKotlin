@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntremanProgramlariListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorPhotoShareReadRecyclerAdapter
+import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.AntrenorlerimListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.adapter.OgrencilerListRecyclerAdapter
 import com.example.huseyinoral_bilgisayarmuhendisligitez.databinding.FragmentUserAntrenorProfileBinding
 import com.example.huseyinoral_bilgisayarmuhendisligitez.model.PhotoSharedByAntrenorData
@@ -39,6 +40,8 @@ class UserAntrenorProfileFragment : Fragment() {
     var programList = ArrayList<WriteProgramData>()
     private lateinit var ogrencilerimAdapter: OgrencilerListRecyclerAdapter
     var ogrencilerimList = ArrayList<SuccessfulPaymentData>()
+    private lateinit var antrenorlerimAdapter: AntrenorlerimListRecyclerAdapter
+    var antrenorlerimList = ArrayList<SuccessfulPaymentData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +54,7 @@ class UserAntrenorProfileFragment : Fragment() {
         readSharedPhotoData()
         readProgramlarimData()
         readOgrencilerimData()
+        readAntrenorlerimData()
         binding.antrenorUserProfileOgrencilereProgramYaz.setOnClickListener {
             userAntrenorToWriteProgramActivity()
         }
@@ -308,5 +312,66 @@ class UserAntrenorProfileFragment : Fragment() {
                     binding.antrenorUserProfileOgrencilerimTextBossa.visibility=View.GONE
                 }
             }
+    }
+
+    private fun readAntrenorlerimData(){
+        val ref = FirebaseDatabase.getInstance().getReference("/SuccessfulPayment")
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+
+        antrenorlerimList.clear()
+        ref.addChildEventListener(object: ChildEventListener {
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                val antrenorlerimData = p0.getValue(SuccessfulPaymentData::class.java)
+
+                if (antrenorlerimData != null) {
+                    if(userID==antrenorlerimData.odeyen_kullanıcı_id){
+                        val payment_id=antrenorlerimData.payment_id
+                        val antrenor_isim=antrenorlerimData.antrenor_username
+                        val antrenor_email=antrenorlerimData.antrenor_email
+                        val antrenor_ucret=antrenorlerimData.antrenor_ucret
+                        val odeme_tarihi=antrenorlerimData.programin_yazildigi_tarih
+                        val odeyen_kullanıcı_id= antrenorlerimData.odeyen_kullanıcı_id
+                        val odeyen_kullanıcı_username=antrenorlerimData.odeyen_kullanıcı_username
+                        val veriler= SuccessfulPaymentData(payment_id,antrenor_isim,antrenor_email,antrenor_ucret,odeyen_kullanıcı_id,odeyen_kullanıcı_username,odeme_tarihi)
+
+                        antrenorlerimList.add(veriler)
+                        Log.d("UserAntrenorProfileFragment","RealtimeDatabase READP OGRENCİLERİM Veriler READ")
+                    }
+                }
+                //recyclerview
+                val layoutManager= LinearLayoutManager(context)
+                binding.antrenorUserProfileRecyclerAntrenorlerim.layoutManager=layoutManager
+                antrenorlerimAdapter= AntrenorlerimListRecyclerAdapter(antrenorlerimList)
+                binding.antrenorUserProfileRecyclerAntrenorlerim.adapter=antrenorlerimAdapter
+                //Antrenörde de Antrenör yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+                if(antrenorlerimList.size<1){
+                    binding.antrenorUserProfileAntrenorlerimTextBossa.text="Antrenör Bulunamadı"
+                    binding.antrenorUserProfileAntrenorlerimTextBossa.visibility=View.VISIBLE
+                }
+                else{
+                    binding.antrenorUserProfileAntrenorlerimTextBossa.visibility=View.GONE
+                }
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+
+            }
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+            }
+            override fun onChildRemoved(p0: DataSnapshot) {
+                antrenorlerimList.clear()
+            }
+        })
+        //Antrenörde de Antrenör yoksa gizli text viewdeki bilgilendirme mesajı yazsın
+        if(antrenorlerimList.size<1){
+            binding.antrenorUserProfileAntrenorlerimTextBossa.text="Antrenör Bulunamadı"
+            binding.antrenorUserProfileAntrenorlerimTextBossa.visibility=View.VISIBLE
+        }
+        else{
+            binding.antrenorUserProfileAntrenorlerimTextBossa.visibility=View.GONE
+        }
     }
 }
