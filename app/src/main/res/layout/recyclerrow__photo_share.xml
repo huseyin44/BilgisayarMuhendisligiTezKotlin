@@ -24,7 +24,8 @@
             android:gravity="center"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:textStyle="normal"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:textAllCaps="true"/>
     </LinearLayout>
     

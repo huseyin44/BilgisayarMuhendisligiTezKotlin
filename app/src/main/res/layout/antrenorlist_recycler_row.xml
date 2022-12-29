@@ -37,7 +37,9 @@
             android:gravity="center_vertical"
             android:textSize="18sp"
             android:textColor="@color/black"
-            android:textStyle="italic"/>
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textStyle="italic"
+            android:textAllCaps="true"/>
         <ImageView
             android:id="@+id/recycler_row_antrenorList_chatimage"
             android:layout_width="48dp"

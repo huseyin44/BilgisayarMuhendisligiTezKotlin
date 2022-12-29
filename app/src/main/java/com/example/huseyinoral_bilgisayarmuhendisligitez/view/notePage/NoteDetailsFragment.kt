@@ -142,7 +142,8 @@ class NoteDetailsFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     private fun updateNoteDetail(){
-        val noteID=if(args.noteDetailsId.isNullOrBlank()) "Boş Sayfa" else args.noteDetailsId
+        val fromUserID = FirebaseAuth.getInstance().currentUser!!.uid
+        val noteID= args.noteDetailsId.ifBlank { "Boş Sayfa" }
 
         val dateCurrent = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
@@ -153,7 +154,7 @@ class NoteDetailsFragment : Fragment() {
         val noteDetailsData = NoteTitleData(noteID,noteTitleText,noteDetailsText,dateClock.toString())
 
         database = Firebase.database.reference
-        database.child("NoteList").child(noteID).setValue(noteDetailsData)
+        database.child("NoteList").child(fromUserID).child(noteID).setValue(noteDetailsData)
 
         noteDetailsToNoteTitle()
     }
