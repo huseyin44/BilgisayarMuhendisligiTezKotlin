@@ -184,7 +184,7 @@
     <fragment
         android:id="@+id/photosShareFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.PhotosShareFragment"
-        android:label="Fotoğraf Paylaş"
+        android:label="Gönderi Paylaş"
         tools:layout="@layout/fragment_photos_share" >
         <action
             android:id="@+id/action_photosShareFragment_to_homePageFragment"
