@@ -24,7 +24,7 @@
             app:destination="@id/userAntrenorProfileFragment" />
     </fragment>
     <fragment
-        android:label="BODY MASS INDEX HESAPLAMA"
+        android:label="Vücut Kitle İndeksi Hesaplama"
         android:id="@+id/bodyMassIndexFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.BodyMassIndexFragment"
         tools:layout="@layout/fragment_body_mass_index" />
@@ -166,7 +166,7 @@
     <fragment
         android:id="@+id/nearByMapsFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.mapsPage.NearByMapsFragment"
-        android:label="GYM Listele"
+        android:label="Spor Salonlarını Listele"
         tools:layout="@layout/fragment_near_by_maps" >
         <action
             android:id="@+id/action_nearByMapsFragment_to_locationListFragment"
@@ -175,7 +175,7 @@
     <fragment
         android:id="@+id/locationListFragment"
         android:name="com.example.huseyinoral_bilgisayarmuhendisligitez.view.mapsPage.LocationListFragment"
-        android:label="Yakındaki GYM Listesi"
+        android:label="Yakındaki Spor Salonları Listesi"
         tools:layout="@layout/fragment_location_list" >
         <argument
             android:name="locationList"

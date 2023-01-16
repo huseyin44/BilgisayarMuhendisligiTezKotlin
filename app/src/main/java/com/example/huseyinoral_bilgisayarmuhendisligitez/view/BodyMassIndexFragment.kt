@@ -45,17 +45,17 @@ class BodyMassIndexFragment : Fragment() {
         val bmi =((kilo*100) / (boy+boy)).toDouble()
 
         if(bmi.toDouble() < 18.49){
-            binding.bmiSonuctext.text = "Vücüt Kitle İndeksi : $bmi  Kilonuz İdeal Kilonun Altındadır"
+            binding.bmiSonuctext.text = "Vücut Kitle İndeksi : $bmi  Kilonuz İdeal Kilonun Altındadır"
         }
         else if(18.5 < bmi.toDouble() && bmi.toDouble() < 24.99){
-            binding.bmiSonuctext.text = "Vücüt Kitle İndeksi : $bmi  Kilonuz İdealdir"
+            binding.bmiSonuctext.text = "Vücut Kitle İndeksi : $bmi  Kilonuz İdealdir"
         }
         else if(25 < bmi.toDouble() && bmi.toDouble() < 29.99){
             binding.bmiSonuctext.text =
-                "Vücüt Kitle İndeksi : $bmi  Kilonuz İdeal Kilonun Üzerindedir"
+                "Vücut Kitle İndeksi : $bmi  Kilonuz İdeal Kilonun Üzerindedir"
         }
         else if(bmi.toDouble() > 30.0){
-            binding.bmiSonuctext.text = "Vücüt Kitle İndeksi : $bmi  Kilonuz İdeal Kilonun Üzerindedir"
+            binding.bmiSonuctext.text = "Vücut Kitle İndeksi : $bmi  Kilonuz İdeal Kilonun Üzerindedir"
         }
         activity?.let { it -> hideSoftKeyboard(it) }
     }

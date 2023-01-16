@@ -77,7 +77,7 @@
         <item
             android:id="@+id/menu_maps"
             android:icon="@drawable/ic_baseline_not_listed_location_24"
-            android:title="GYM Listesi"
+            android:title="SPOR SALONLARI"
             app:showAsAction="never"
             >
         </item>
@@ -98,7 +98,7 @@
         <item
             android:id="@+id/menu_vucutkitleindeksi"
             android:icon="@drawable/ic_baseline_calculate_24"
-            android:title="VÜCÜT KİTLE İNDEKSİ"
+            android:title="VKİ HESAPLAMA"
             app:showAsAction="never"
             >
         </item>

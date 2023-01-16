@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:textAlignment="viewStart"
-            android:text="Yakındaki GYM' leri listele"
+            android:text="Yakındaki Spor Salonlarını listele"
             android:textColor="#9E1010"
             android:background="@android:color/transparent"
             android:textSize="20sp"
